@@ -77,3 +77,4 @@ Attention : Le joueur doit continuer, lors de ses tours suivants, à poser deux 
 
 # Protocole réseau
 
+![](https://github.com/BladeBuru/The-game-host/blob/master/Capture%20d%E2%80%99%C3%A9cran%202022-10-26%20095444.png)
