@@ -73,4 +73,7 @@ Lorsqu‘un joueur a épuisé sa pioche, il continue à jouer sans pouvoir pioch
 Attention : Le joueur doit continuer, lors de ses tours suivants, à poser deux cartes par tour (ou plus s‘il le souhaite) de la manière décrite plus haut. La partie se termine immédiatement lorsqu‘un joueur a posé la totalité de ses 58 cartes numérotées. Ce joueur est le gagnant. Le jeu peut se terminer prématurément si, au cours de la partie, un joueur ne peut plus poser le nombre minimum requis de cartes (soit deux cartes). Dans ce cas, ce joueur a perdu.
 
 
+----------
+
+# Protocole réseau
 
