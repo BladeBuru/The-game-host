@@ -1,8 +1,17 @@
 package fr.pantheonsorbonne.cri;
 
+import fr.pantheonsorbonne.cri.game.Player;
+
+import java.util.List;
+
 public abstract class TheGameEngine {
     public void play(){
-    //To do 
+
+        Player player1 = new Player();
+        Player player2 = new Player();
+
+
+
     }
 
 
@@ -13,7 +22,8 @@ public abstract class TheGameEngine {
     protected abstract void playRound(/*...*/);
     
     protected boolean playerWin(Player p1){
-        //To Do 
+
+        //To Do
         //Verif de si il peut jouer ou si il a finit ses cartes à l'interieur de la fonction????
         return true;//to reform
     }
