@@ -1,7 +1,3 @@
-# java-maven-quickstart-latest
-
- this is an up-to-date base archetype for quick starting modern java CLI apps 
- 
 # Règle résumé
 
 Chaque joueur reçoit les 60 cartes. Chacun pose devant lui les deux cartes Base (1 et 60), face visible. Mélangez bien vos 58 cartes numérotées et formez-en une pioche que vous posez, face cachée. Chacun prend en main les 6 premières cartes numérotées de sa propre pioche. On tire au sort pour désigner celui ou celle qui commence.
