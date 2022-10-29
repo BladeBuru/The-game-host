@@ -13,7 +13,7 @@ public static int CARD_IN_HAND = 6;
      private int ascendingStack;
      private int downStack;
      private List<Integer> cardInHand ;
-     private List<Integer> pick ;
+     private List<Integer> pick;
 
 
     public Player(int numberEnd){

@@ -5,15 +5,21 @@ import fr.pantheonsorbonne.cri.game.Player;
 import java.util.List;
 
 public abstract class TheGameEngine {
-    public void play(){
 
-        Player player1 = new Player();
-        Player player2 = new Player();
-
-
+    protected  void play(){
+                Player player1 = new Player();
+                Player player2 = new Player();
 
     }
+}
 
+    public abstract class TheGameEngine {
+        protected void play(){
+
+            Player player1 = new Player();
+            Player player2 = new Player();
+
+        }
 
     protected abstract boolean setPiles(/*...*/); 
     
@@ -35,6 +41,6 @@ public abstract class TheGameEngine {
 
     protected abstract void declareWinner(String winner);
 
-    
+    protected abstract List<Integer> getCardsPlayed(Player player);
 
 }

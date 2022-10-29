@@ -9,7 +9,7 @@ public class LocalTheGame extends TheGameEngine{
 
     private final List<Player> players;
     public  LocalTheGame(){
-    players = new ArrayList<>();
+    players = new ArrayList<Player>();
     this.players.add(new Player());
     this.players.add(new Player());
     }
