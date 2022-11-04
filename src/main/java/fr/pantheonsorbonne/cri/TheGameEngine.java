@@ -5,15 +5,6 @@ import fr.pantheonsorbonne.cri.game.Player;
 import java.util.List;
 
 public abstract class TheGameEngine {
-
-    protected  void play(){
-                Player player1 = new Player();
-                Player player2 = new Player();
-
-    }
-}
-
-    public abstract class TheGameEngine {
         protected void play(){
 
             Player player1 = new Player();

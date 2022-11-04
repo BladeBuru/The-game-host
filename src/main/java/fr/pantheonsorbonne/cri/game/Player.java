@@ -28,12 +28,12 @@ public static int CARD_IN_HAND = 6;
         //getDrawCards(CARD_IN_HAND);
     }
     public Player(){
-        this.Player(VALUE_DOWN_STACK);
+            new Player(VALUE_DOWN_STACK);
     }
 
      public String getDrawCards(int numberOfCardsToDraw){
             StringBuilder stringHand  = new StringBuilder();
-        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND  ; l++) {
+        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND && this.cardInHand.size() > 0; l++) {
             this.cardInHand.add(this.pick.get(this.pick.size()-1));
             stringHand.append(this.pick.size()-1);
             stringHand.append(' ');
