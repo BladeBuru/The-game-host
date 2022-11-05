@@ -43,5 +43,16 @@ public static int CARD_IN_HAND = 6;
          return stringHand.toString();
      }
 
-     }
+    public static int getCardInHand() {
+        return CARD_IN_HAND;
+    }
+
+    public int getAscendingStack() {
+        return ascendingStack;
+    }
+
+    public int getDownStack() {
+        return downStack;
+    }
+}
 
