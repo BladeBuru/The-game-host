@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.cri;
-
+import fr.pantheonsorbonne.miage.game.Card;
+import fr.pantheonsorbonne.miage.model.Game;
+import fr.pantheonsorbonne.miage.model.GameCommand;
 public class TheGameEngineNetwork extends TheGameEngine {
 
     private static final int PLAYER_COUNT = 3;
@@ -14,7 +16,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
         this.ourGame = ourGame;
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         HostFacade hostFacade = Facade.getFacade();
         hostFacade.waitReady;
 
@@ -26,7 +28,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
 
         TheGameEngine host = new TheGameEngineNetwork(hostFacade, ourGame.getPlayers(), ourGame);
         host.play();
-    }
+    }*/
 
     //...
 }

@@ -43,8 +43,21 @@ public static int CARD_IN_HAND = 6;
          return stringHand.toString();
      }
 
-    public static int getCardInHand() {
+    public static int getNumberCardInHand() {
         return CARD_IN_HAND;
+    }
+
+    public List<Integer> getCardInHand() {
+        return cardInHand;
+    }
+
+    public boolean cardIsInHand(int number){
+
+        for (Integer cardHand:
+             this.cardInHand) {
+            if (cardHand == number)return true;
+        }
+        return false;
     }
 
     public int getAscendingStack() {

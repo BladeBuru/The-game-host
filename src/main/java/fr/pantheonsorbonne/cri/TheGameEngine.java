@@ -1,7 +1,10 @@
 package fr.pantheonsorbonne.cri;
 
+import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class TheGameEngine {
@@ -19,16 +22,29 @@ public abstract class TheGameEngine {
     
     protected abstract void giveCardsToPlayer(/*...*/);
 
-    protected  boolean playRound(Player firstPlayer, Player secondPlayer,String cardsPlay ){
-        int tabcardsPlay[];
-        // creéer une méthode pour sépare les différenet coupp
-        //regarder la taille
-        // poser au bon androit 
+    protected boolean playRound(Player firstPlayer, Player secondPlayer,ArrayList<String> cardsPlay ){
+        //Minimum two cards played and maximum number in hand
+        if (cardsPlay.size() < 2 ||cardsPlay.size() > firstPlayer.getCardInHand().size() )return false;
+        //All the cards played are present in his hand
+        for (String card: cardsPlay) {
+            if (!firstPlayer.cardIsInHand(Integer.parseInt( card.substring(0,2))))return  false;
+        }
+        CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(),firstPlayer.getDownStack(),secondPlayer.getAscendingStack(),secondPlayer.getDownStack());
+
+        for (String card: cardsPlay) {
+        if(!cardTray.poseCard(card))return false;
+
+        }
+        // poser au bon androit
         // regarder si les cartes son préseznte dans le jeux
-        // les poser et voir si ell erespecte les regle de pose
-        //
+        // les poser et voir si ell erespecte les regle de pose 
 
     return true;
+    }
+
+    private ArrayList<String> splitString (String cardsPlay ){
+        ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
+        return cardsPlaySplit;
     }
     
     protected boolean playerWin(Player p1){
