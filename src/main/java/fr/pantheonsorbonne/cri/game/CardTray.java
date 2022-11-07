@@ -6,42 +6,57 @@ public class CardTray {
     static char CARACTERE_ALLY = 'A';
     static char CARACTERE_ENEMY = 'E';
 
-    private int ascendingStackAlly;
-    private int downStackAlly;
-    private int ascendingStackEnemy;
-    private int downStackEnemy;
+    private int ascendingAllyStack;
+    private int downAllyStack;
+    private int ascendingEnemyStack;
+    private int downEnemyStack;
+    private boolean playEnemyStack = false;
 
 
-    public CardTray(int ascendingStackAlly, int downStackAlly, int ascendingStackEnemy, int downStackEnemy) {
-        this.ascendingStackAlly = ascendingStackAlly;
-        this.downStackAlly = downStackAlly;
-        this.ascendingStackEnemy = ascendingStackEnemy;
-        this.downStackEnemy = downStackEnemy;
+    public CardTray(int ascendingStackAlly, int downAllyStack, int ascendingEnemyStack, int downEnemyStack) {
+        this.ascendingAllyStack = ascendingStackAlly;
+        this.downAllyStack = downAllyStack;
+        this.ascendingEnemyStack = ascendingEnemyStack;
+        this.downEnemyStack = downEnemyStack;
     }
 
-    private boolean poseAscendingStackAlly(int ascendingStackAlly) {
-        this.ascendingStackAlly = ascendingStackAlly;
-        //ToDo
+    private boolean poseAscendingStackAlly(int card) {
+       if(card > this.ascendingAllyStack || card == this.ascendingAllyStack - 10){
+        this.ascendingAllyStack = card;
+        return true;
+       }
+        return false;
     }
 
-    private boolean poseDownStackAlly(int downStackAlly) {
-        this.downStackAlly = downStackAlly;
-        //ToDo
+    private boolean poseDownStackAlly(int card) {
+        if(card < this.ascendingAllyStack || card == this.ascendingAllyStack + 10){
+            this.downAllyStack = card;
+            return true;
+        }
+        return false;
     }
 
-    private boolean poseAscendingStackEnemy(int ascendingStackEnemy) {
-        this.ascendingStackEnemy = ascendingStackEnemy;
-        //ToDo
+    private boolean poseAscendingStackEnemy(int card) {
+        if(card < this.ascendingEnemyStack && this.playEnemyStack == false){
+            this.ascendingEnemyStack = card;
+            this.playEnemyStack = true;
+            return true;
+        }
+        return false;
     }
 
-    private boolean poseDownStackEnemy(int downStackEnemy) {
-        this.downStackEnemy = downStackEnemy;
-        //ToDo
+    private boolean poseDownStackEnemy(int card) {
+        if(card > this.ascendingEnemyStack && this.playEnemyStack == false){
+            this.downEnemyStack = card;
+            this.playEnemyStack = true;
+            return true;
+        }
+        return false;
     }
 
     public boolean poseCard(String card){
 
-        // TODO WARNINNG truc pas beau a modifié  recuperer le nexte number et les next char
+        // TODO WARNINNG truc pas beau a modifié  recuperer le next number et les next char
 
         int value = Integer.parseInt( card.substring(0,2));
         char typeStack =card.charAt(2);
@@ -71,27 +86,24 @@ public class CardTray {
         return false;
     }
 
-    public int getAscendingStackAlly() {
-        return ascendingStackAlly;
+    public int getAscendingAllyStack() {
+        return ascendingAllyStack;
     }
 
-    public int getDownStackAlly() {
-        return downStackAlly;
+    public int getDownAllyStack() {
+        return downAllyStack;
     }
 
-    public int getAscendingStackEnemy() {
-        return ascendingStackEnemy;
+    public int getAscendingEnemyStack() {
+        return ascendingEnemyStack;
     }
 
-    public int getDownStackEnemy() {
-        return downStackEnemy;
+    public int getDownEnemyStack() {
+        return downEnemyStack;
+    }
+    public boolean toPlayOnTheEnemyStack() {
+        return playEnemyStack;
     }
 
-    public boolean placeCard(String card){
-
-
-
-        return true;
-    }
 
 }

@@ -14,6 +14,16 @@ public abstract class TheGameEngine {
             Player player1 = new Player();
             Player player2 = new Player();
 
+
+            //Todo
+            // Jouer des round en inversqnt a chaque fois les joeuur
+
+
+            //Todo
+            // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arreter le jeu
+
+
+
         }
 
 
@@ -33,11 +43,13 @@ public abstract class TheGameEngine {
 
         for (String card: cardsPlay) {
         if(!cardTray.poseCard(card))return false;
-
         }
-        // poser au bon androit
-        // regarder si les cartes son préseznte dans le jeux
-        // les poser et voir si ell erespecte les regle de pose 
+
+        //ToDo
+        // Si tous c'est bien passser mettre a jour le plateau et retirer les cartes en main du joueur
+        // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher
+        // revoyer les cartes joueur au joueur enemie
+        // ...
 
     return true;
     }
@@ -49,9 +61,9 @@ public abstract class TheGameEngine {
     
     protected boolean playerWin(Player p1){
 
-        //To Do
-        //Verif de si il peut jouer ou si il a finit ses cartes à l'interieur de la fonction????
-        return true;//to reform
+        //ToDo
+        // Verif de si il peut jouer ou si il a finit ses cartes à l'interieur de la fonction????
+        return true;// to reform
     }
 
     protected static String getWinner(Player p1, Player p2){

@@ -1,7 +1,6 @@
 package fr.pantheonsorbonne.cri;
 
 import fr.pantheonsorbonne.cri.game.Player;
-import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
