@@ -27,7 +27,7 @@ public abstract class TheGameEngine {
         if (cardsPlay.size() < 2 ||cardsPlay.size() > firstPlayer.getCardInHand().size() )return false;
         //All the cards played are present in his hand
         for (String card: cardsPlay) {
-            if (!firstPlayer.cardIsInHand(Integer.parseInt( card.substring(0,2))))return  false;
+            if (!firstPlayer.cardIsInHand(Integer.parseInt( card.substring(0,2))))return  false; // TODO Cganger la façon de récuperre le int
         }
         CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(),firstPlayer.getDownStack(),secondPlayer.getAscendingStack(),secondPlayer.getDownStack());
 

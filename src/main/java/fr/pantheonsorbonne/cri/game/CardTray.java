@@ -1,6 +1,11 @@
 package fr.pantheonsorbonne.cri.game;
 
 public class CardTray {
+    static char CARACTERE_ASCENDING_STACK = '^' ;
+    static char CARACTERE_DOWN_STACK = 'v';
+    static char CARACTERE_ALLY = 'A';
+    static char CARACTERE_ENEMY = 'E';
+
     private int ascendingStackAlly;
     private int downStackAlly;
     private int ascendingStackEnemy;
@@ -14,19 +19,48 @@ public class CardTray {
         this.downStackEnemy = downStackEnemy;
     }
 
+    private boolean poseAscendingStackAlly(int ascendingStackAlly) {
+        this.ascendingStackAlly = ascendingStackAlly;
+        //ToDo
+    }
+
+    private boolean poseDownStackAlly(int downStackAlly) {
+        this.downStackAlly = downStackAlly;
+        //ToDo
+    }
+
+    private boolean poseAscendingStackEnemy(int ascendingStackEnemy) {
+        this.ascendingStackEnemy = ascendingStackEnemy;
+        //ToDo
+    }
+
+    private boolean poseDownStackEnemy(int downStackEnemy) {
+        this.downStackEnemy = downStackEnemy;
+        //ToDo
+    }
+
     public boolean poseCard(String card){
 
+        // TODO WARNINNG truc pas beau a modifié  recuperer le nexte number et les next char
+
+        int value = Integer.parseInt( card.substring(0,2));
+        char typeStack =card.charAt(2);
+        char whichSide = card.charAt(3);
+
+        //ToDo
+        //ToDo
+
+
+       if(typeStack == CARACTERE_ASCENDING_STACK)
 
         //ToDo
         //ToDo
         //ToDo
-        //ToDo
-        //ToDo
 
 
 
 
-        return;
+        return false;
     }
 
     public int getAscendingStackAlly() {
