@@ -51,15 +51,23 @@ public class CardTray {
         //ToDo
 
 
-       if(typeStack == CARACTERE_ASCENDING_STACK)
+       if(typeStack == CARACTERE_ALLY){
+           if (whichSide == CARACTERE_ASCENDING_STACK){
+               return  this.poseAscendingStackAlly(value);
+           } else if (whichSide == CARACTERE_DOWN_STACK) {
+               return this.poseDownStackAlly(value);
+           }
+           return  false;
+       }
 
-        //ToDo
-        //ToDo
-        //ToDo
 
-
-
-
+        if(typeStack == CARACTERE_ENEMY){
+            if (whichSide == CARACTERE_ASCENDING_STACK){
+                return this.poseAscendingStackEnemy(value);
+            } else if (whichSide == CARACTERE_DOWN_STACK) {
+               return this.poseDownStackEnemy(value);
+            }
+        }
         return false;
     }
 
