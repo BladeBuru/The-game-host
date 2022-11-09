@@ -6,43 +6,67 @@ import fr.pantheonsorbonne.cri.game.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public abstract class TheGameEngine {
 
-        protected void play(){
 
-            Player player1 = new Player();
-            Player player2 = new Player();
+    protected void play() {
+        Stack<Player> players = new Stack<>();
+        players.push(new Player());
+        players.push(new Player());
 
+        //TODO
+        while (){
+            Player firstPlayer = players.pop();
+            Player secondPlayer = players.pop();
+            players.push(firstPlayer);
+            players.push(secondPlayer);
+            //TODO
+            // recuperer les cartes joué par le premier joueur
 
-            //Todo
-            // Jouer des round en inversqnt a chaque fois les joeuur
+            int failureCounter = 0 ;
 
+            while (failureCounter < 3 ){
 
-            //Todo
-            // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arreter le jeu
+                if( playRound(firstPlayer,secondPlayer,splitString(cardsPlay))){
+                    break;
+                }
+                failureCounter++;
+            }
 
 
 
         }
 
 
+        //Todo
+        // Jouer des round en inversqnt a chaque fois les joeuur
 
-    protected abstract boolean setPiles(/*...*/); 
-    
+
+        //Todo
+        // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arreter le jeu
+
+
+    }
+
+
+    protected abstract boolean setPiles(/*...*/);
+
     protected abstract void giveCardsToPlayer(/*...*/);
 
-    protected boolean playRound(Player firstPlayer, Player secondPlayer,ArrayList<String> cardsPlay ){
+    protected boolean playRound(Player firstPlayer, Player secondPlayer, ArrayList<String> cardsPlay) {
         //Minimum two cards played and maximum number in hand
-        if (cardsPlay.size() < 2 ||cardsPlay.size() > firstPlayer.getCardInHand().size() )return false;
+        if (cardsPlay.size() < 2 || cardsPlay.size() > firstPlayer.getCardInHand().size()) return false;
         //All the cards played are present in his hand
-        for (String card: cardsPlay) {
-            if (!firstPlayer.cardIsInHand(Integer.parseInt( card.substring(0,2))))return  false; // TODO Cganger la façon de récuperre le int
+        for (String card : cardsPlay) {
+            if (!firstPlayer.cardIsInHand(Integer.parseInt(card.substring(0, 2))))
+                return false; // TODO Cganger la façon de récuperre le int
         }
-        CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(),firstPlayer.getDownStack(),secondPlayer.getAscendingStack(),secondPlayer.getDownStack());
+        CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(), firstPlayer.getDownStack(), secondPlayer.getAscendingStack(), secondPlayer.getDownStack());
 
-        for (String card: cardsPlay) {
-        if(!cardTray.poseCard(card))return false;
+        for (String card : cardsPlay) {
+            if (!cardTray.poseCard(card)) return false;
         }
 
         //ToDo
@@ -51,22 +75,22 @@ public abstract class TheGameEngine {
         // revoyer les cartes joueur au joueur enemie
         // ...
 
-    return true;
+        return true;
     }
 
-    private ArrayList<String> splitString (String cardsPlay ){
+    private ArrayList<String> splitString(String cardsPlay) {
         ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
         return cardsPlaySplit;
     }
-    
-    protected boolean playerWin(Player p1){
+
+    protected boolean playerWin(Player p1) {
 
         //ToDo
         // Verif de si il peut jouer ou si il a finit ses cartes à l'interieur de la fonction????
         return true;// to reform
     }
 
-    protected static String getWinner(Player p1, Player p2){
+    protected static String getWinner(Player p1, Player p2) {
 
         return;
     }
