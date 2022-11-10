@@ -60,6 +60,12 @@ public static int CARD_IN_HAND = 6;
         return false;
     }
 
+    public int getSizeCardInHand(){
+        return this.cardInHand.size();
+    }
+    public int getSizePick(){
+        return this.pick.size();
+    }
     public int getAscendingStack() {
         return ascendingStack;
     }

@@ -82,17 +82,14 @@ public abstract class TheGameEngine {
         ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
         return cardsPlaySplit;
     }
-
+    
     protected boolean playerWin(Player p1) {
-
-        //ToDo
-        // Verif de si il peut jouer ou si il a finit ses cartes à l'interieur de la fonction????
-        return true;// to reform
+        return (p1.getSizeCardInHand() == 0 && p1.getSizePick() == 0);// to reform
     }
 
     protected static String getWinner(Player p1, Player p2) {
 
-        return;
+
     }
 
     protected abstract void declareWinner(String winner);
