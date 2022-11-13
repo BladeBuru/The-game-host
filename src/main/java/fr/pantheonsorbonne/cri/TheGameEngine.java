@@ -76,7 +76,13 @@ public abstract class TheGameEngine {
         }
 
         //ToDo
-        // Si tous c'est bien passser mettre a jour le plateau et retirer les cartes en main du joueur
+        // Si tous c'est bien passser mettre a jour le plateau et retirer les cartes en main du joueur // a verifier
+        int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
+        String cardsDraw = new String();
+        if (numberCardsDrawn>0){
+            cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
+        }
+        //Todo
         // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher
         // revoyer les cartes joueur au joueur enemie
         // ...
@@ -97,6 +103,16 @@ public abstract class TheGameEngine {
         return cardsPlaySplit;
     }
 
+    private int calculationCardsDrawn(Player player1,CardTray cardTray ){
+        if(cardTray.toPlayOnTheEnemyStack()){
+        int numberCardsDrawn = Player.CARD_IN_HAND -  player1.getCardInHand().size();
+            if (player1.getPick().size() < numberCardsDrawn)return player1.getPick().size();
+            return numberCardsDrawn;
+        }else{
+            if (player1.getPick().size()< 2)return player1.getPick().size();
+            return 2;
+        }
+    }
     protected boolean playerWin(Player p1) {
         return (p1.getCardInHand().size() == 0 && p1.getPick().size() == 0);// to reform
     }

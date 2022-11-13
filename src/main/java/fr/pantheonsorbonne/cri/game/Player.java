@@ -25,7 +25,7 @@ public static int CARD_IN_HAND = 6;
         }
         Collections.shuffle(pick);
         this.cardInHand = new ArrayList<>(CARD_IN_HAND);
-        //getDrawCards(CARD_IN_HAND);
+        getDrawCards(CARD_IN_HAND);
     }
     public Player(){
             new Player(VALUE_DOWN_STACK);
