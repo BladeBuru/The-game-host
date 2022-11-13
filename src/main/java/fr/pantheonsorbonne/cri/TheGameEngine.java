@@ -76,15 +76,21 @@ public abstract class TheGameEngine {
         }
 
         //ToDo
-        // Si tous c'est bien passser mettre a jour le plateau et retirer les cartes en main du joueur // a verifier
+        // Si tous c'est bien passer mettre a jour le plateau et retirer les cartes en main du joueur // a verifier
+       firstPlayer.setAscendingStack(cardTray.getAscendingAllyStack());
+       firstPlayer.setDownStack(cardTray.getDownAllyStack());
+       secondPlayer.setAscendingStack(cardTray.getAscendingEnemyStack());
+       secondPlayer.setDownStack(cardTray.getDownEnemyStack());
+       firstPlayer.removeCards(cardsJustNumber);
+        //Todo
+        // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher // a verifier
         int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
         String cardsDraw = new String();
         if (numberCardsDrawn>0){
             cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
         }
-        //Todo
-        // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher
-        // revoyer les cartes joueur au joueur enemie
+        //ToDO
+        // revoyer les cartes joueur au joueur ennemie
         // ...
 
         return true;
@@ -116,10 +122,10 @@ public abstract class TheGameEngine {
     protected boolean playerWin(Player p1) {
         return (p1.getCardInHand().size() == 0 && p1.getPick().size() == 0);// to reform
     }
-
+    //ToDO
     protected static String getWinner(Player p1, Player p2) {
-
-
+    //ToDO
+    return   "";
     }
 
     protected abstract void declareWinner(String winner);
