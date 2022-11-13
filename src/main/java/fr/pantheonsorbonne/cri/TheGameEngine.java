@@ -3,6 +3,7 @@ package fr.pantheonsorbonne.cri;
 import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ public abstract class TheGameEngine {
             players.push(secondPlayer);
             //TODO
             // recuperer les cartes joué par le premier joueur
-
+            // thow une erreur
             int failureCounter = 0 ;
 
             while (failureCounter < 3 ){
@@ -58,11 +59,16 @@ public abstract class TheGameEngine {
     protected boolean playRound(Player firstPlayer, Player secondPlayer, ArrayList<String> cardsPlay) {
         //Minimum two cards played and maximum number in hand
         if (cardsPlay.size() < 2 || cardsPlay.size() > firstPlayer.getCardInHand().size()) return false;
+
+        ArrayList<Integer> cardsJustNumber =  Player.splitTheNumber(cardsPlay);
         //All the cards played are present in his hand
-        for (String card : cardsPlay) {
-            if (!firstPlayer.cardIsInHand(Integer.parseInt(card.substring(0, 2))))
-                return false; // TODO Cganger la façon de récuperre le int
+        for (Integer card : cardsJustNumber) {
+            if (!firstPlayer.cardIsInHand(card))
+                return false; // TODO Changer la façon de récuperre le int
         }
+        // No duplicates
+        if (duplicates(cardsJustNumber))return false;
+
         CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(), firstPlayer.getDownStack(), secondPlayer.getAscendingStack(), secondPlayer.getDownStack());
 
         for (String card : cardsPlay) {
@@ -77,14 +83,22 @@ public abstract class TheGameEngine {
 
         return true;
     }
+    private boolean duplicates(ArrayList<Integer> cards) {
+        for (Integer card : cards) {
+            if (cards.contains(card)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     private ArrayList<String> splitString(String cardsPlay) {
         ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
         return cardsPlaySplit;
     }
-    
+
     protected boolean playerWin(Player p1) {
-        return (p1.getSizeCardInHand() == 0 && p1.getSizePick() == 0);// to reform
+        return (p1.getCardInHand().size() == 0 && p1.getPick().size() == 0);// to reform
     }
 
     protected static String getWinner(Player p1, Player p2) {

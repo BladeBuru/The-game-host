@@ -43,9 +43,6 @@ public static int CARD_IN_HAND = 6;
          return stringHand.toString();
      }
 
-    public static int getNumberCardInHand() {
-        return CARD_IN_HAND;
-    }
 
     public List<Integer> getCardInHand() {
         return cardInHand;
@@ -60,12 +57,20 @@ public static int CARD_IN_HAND = 6;
         return false;
     }
 
-    public int getSizeCardInHand(){
-        return this.cardInHand.size();
+
+    static final public ArrayList<Integer> splitTheNumber(ArrayList<String> cardsPlay){
+        ArrayList<Integer> cards= new ArrayList<>();
+
+        for (String card : cardsPlay) {
+            cards.add(Integer.parseInt(card.substring(0, 2)));
+        }
+        return cards;
     }
-    public int getSizePick(){
-        return this.pick.size();
+
+    public List<Integer> getPick() {
+        return pick;
     }
+
     public int getAscendingStack() {
         return ascendingStack;
     }
