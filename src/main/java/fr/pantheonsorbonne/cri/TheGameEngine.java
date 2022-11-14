@@ -26,6 +26,36 @@ public abstract class TheGameEngine {
             //TODO
             // recuperer les cartes joué par le premier joueur
             // thow une erreur
+            Player playingPlayer = new Player();
+            boolean isFirstPlayerPlaying = true;
+
+            playingPlayer = firstPlayer;
+
+            while (canPlayerPlay(firstPlayer, secondPlayer) || canPlayerPlay(secondPlayer, firstPlayer)){
+
+                int failureCounter = 0 ;
+
+                while (failureCounter < 3 ){
+
+                    if( playRound(firstPlayer,secondPlayer,splitString(cardsPlay))){
+                        if(isFirstPlayerPlaying){
+                            playingPlayer = secondPlayer;
+                            isFirstPlayerPlaying = false;
+                        }
+                        else{
+                            playingPlayer = firstPlayer;
+                            isFirstPlayerPlaying = true;
+                        }
+                        break;
+                    }
+                    failureCounter++;
+                }
+
+            }
+
+            //TODO
+            // recuperer les cartes joué par le premier joueur
+            // thow une erreur
             int failureCounter = 0 ;
 
             while (failureCounter < 3 ){
@@ -36,13 +66,7 @@ public abstract class TheGameEngine {
                 failureCounter++;
             }
 
-
-
         }
-
-
-        //Todo
-        // Jouer des round en inversqnt a chaque fois les joeuur
 
 
         //Todo
@@ -119,6 +143,50 @@ public abstract class TheGameEngine {
             return 2;
         }
     }
+    
+    protected boolean canPlayerPlay(Player playing, Player enemy) {
+
+        //Si la main du joueur possède moins de 2 cartes alors le joueur ne peut pas jouer
+        if (playing.getCardInHand().size() < 2){
+            return false;
+        }
+        
+        int numberCarPlayable = 0;
+
+        //On vérifie pour chaques cartes de la main du joueur si elles sont jouables
+        for(int i : playing.getCardInHand()) {
+            if(isACardPlayable(i, playing, enemy)){
+                numberCarPlayable++;
+            }
+        }
+
+        //Si le joueur possède plus de 2 cartes jouables alors il peut jouer
+        if (numberCarPlayable >= 2){
+            return true;
+        }
+
+        return false;
+        
+    }
+
+    protected boolean isACardPlayable(int card, Player playing, Player enemy){
+
+        //Si la carte est valide pour la pile déscendante du joueur
+        if(card < playing.getDownStack() || card+10 == playing.getDownStack()){
+            return true;
+        }
+        //Si la carte est valide pour la pile ascendante du joueur
+        else if (card > playing.getAscendingStack() || card-10 == playing.getAscendingStack()){
+            return true;
+        }
+        //Si la carte peut être posé sur l'une des piles adverse
+        else if (card > enemy.getDownStack() || card < enemy.getAscendingStack()){
+            return true;
+        }
+        return false;
+
+    }
+    
     protected boolean playerWin(Player p1) {
         return (p1.getCardInHand().size() == 0 && p1.getPick().size() == 0);// to reform
     }
