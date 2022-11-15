@@ -13,18 +13,18 @@ public static int CARD_IN_HAND = 6;
      private int ascendingStack;
      private int downStack;
      private List<Integer> cardInHand ;
-     private List<Integer> pick;
+     private List<Integer> pile;
 
 
 
     public Player(int numberEnd){
         this.ascendingStack = VALUE_ASCENDING_STACK;
         this.downStack = VALUE_DOWN_STACK;
-        this.pick = new ArrayList<>(VALUE_DOWN_STACK - VALUE_ASCENDING_STACK - 1);
+        this.pile = new ArrayList<>(VALUE_DOWN_STACK - VALUE_ASCENDING_STACK - 1);
         for (int i = VALUE_ASCENDING_STACK + 1; i < numberEnd; i++) {
-            this.pick.add(i);
+            this.pile.add(i);
         }
-        Collections.shuffle(pick);
+        Collections.shuffle(pile);
         this.cardInHand = new ArrayList<>(CARD_IN_HAND);
         getDrawCards(CARD_IN_HAND);
     }
@@ -42,7 +42,7 @@ public static int CARD_IN_HAND = 6;
     }
 
 
-
+    // Met dans une array list les nombres des coups joués
     static final public ArrayList<Integer> splitTheNumber(ArrayList<String> cardsPlay){
         ArrayList<Integer> cards= new ArrayList<>();
 
@@ -63,10 +63,10 @@ public static int CARD_IN_HAND = 6;
     public String getDrawCards(int numberOfCardsToDraw){
         StringBuilder stringHand  = new StringBuilder();
         for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND && this.cardInHand.size() > 0; l++) {
-            this.cardInHand.add(this.pick.get(this.pick.size()-1));
-            stringHand.append(this.pick.size()-1);
+            this.cardInHand.add(this.pile.get(this.pile.size()-1));
+            stringHand.append(this.pile.size()-1);
             stringHand.append(' ');
-            this.pick.remove(this.pick.size()-1);
+            this.pile.remove(this.pile.size()-1);
         }
         Collections.sort(this.cardInHand);
         return stringHand.toString();
@@ -77,8 +77,8 @@ public static int CARD_IN_HAND = 6;
     }
 
 
-    public List<Integer> getPick() {
-        return pick;
+    public List<Integer> getPile() {
+        return pile;
     }
 
     public int getAscendingStack() {

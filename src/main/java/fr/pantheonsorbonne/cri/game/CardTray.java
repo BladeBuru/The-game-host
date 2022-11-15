@@ -1,10 +1,11 @@
 package fr.pantheonsorbonne.cri.game;
 
 public class CardTray {
-    static char CARACTERE_ASCENDING_STACK = '^' ;
-    static char CARACTERE_DOWN_STACK = 'v';
-    static char CARACTERE_ALLY = 'A';
-    static char CARACTERE_ENEMY = 'E';
+    static char CHARACTER_ASCENDING_STACK = '^' ;
+    static char CHARACTER_DOWN_STACK = 'v';
+    //Ally est le joueur qui joue ce tour
+    static char CHARACTER_ALLY = 'A';
+    static char CHARACTER_ENEMY = 'E';
 
     private int ascendingAllyStack;
     private int downAllyStack;
@@ -18,6 +19,13 @@ public class CardTray {
         this.downAllyStack = downAllyStack;
         this.ascendingEnemyStack = ascendingEnemyStack;
         this.downEnemyStack = downEnemyStack;
+    }
+
+    public CardTray(Player allyPlayer, Player enemyPlayer) {
+        this.ascendingAllyStack = allyPlayer.getAscendingStack();
+        this.downAllyStack = allyPlayer.getDownStack();
+        this.ascendingEnemyStack = enemyPlayer.getAscendingStack();
+        this.downEnemyStack = enemyPlayer.getDownStack();
     }
 
     private boolean poseAscendingStackAlly(int card) {
@@ -53,10 +61,10 @@ public class CardTray {
         }
         return false;
     }
-
+    //09vA,18^v
     public boolean poseCard(String card){
 
-        // TODO WARNINNG truc pas beau a modifié  recuperer le next number et les next char
+        // TODO WARNING truc pas beau a modifier récupère le next number et les next char
 
         int value = Integer.parseInt( card.substring(0,2));
         char typeStack =card.charAt(2);
@@ -66,20 +74,20 @@ public class CardTray {
         //ToDo
 
 
-       if(typeStack == CARACTERE_ALLY){
-           if (whichSide == CARACTERE_ASCENDING_STACK){
+       if(whichSide == CHARACTER_ALLY){
+           if (typeStack == CHARACTER_ASCENDING_STACK){
                return  this.poseAscendingStackAlly(value);
-           } else if (whichSide == CARACTERE_DOWN_STACK) {
+           } else if (typeStack == CHARACTER_DOWN_STACK) {
                return this.poseDownStackAlly(value);
            }
            return  false;
        }
 
 
-        if(typeStack == CARACTERE_ENEMY){
-            if (whichSide == CARACTERE_ASCENDING_STACK){
+        if(whichSide == CHARACTER_ENEMY){
+            if (typeStack == CHARACTER_ASCENDING_STACK){
                 return this.poseAscendingStackEnemy(value);
-            } else if (whichSide == CARACTERE_DOWN_STACK) {
+            } else if (typeStack == CHARACTER_DOWN_STACK) {
                return this.poseDownStackEnemy(value);
             }
         }

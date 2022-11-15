@@ -24,8 +24,8 @@ public abstract class TheGameEngine {
             players.push(firstPlayer);
             players.push(secondPlayer);
             //TODO
-            // recuperer les cartes joué par le premier joueur
-            // thow une erreur
+            // récupère les cartes joué par le premier joueur
+            // throw une erreur
             int failureCounter = 0 ;
 
             while (failureCounter < 3 ){
@@ -36,17 +36,13 @@ public abstract class TheGameEngine {
                 failureCounter++;
             }
 
-
-
         }
 
+        //Todo
+        // Jouer des round en inversant a chaque fois les joueur
 
         //Todo
-        // Jouer des round en inversqnt a chaque fois les joeuur
-
-
-        //Todo
-        // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arreter le jeu
+        // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arrête le jeu
 
 
     }
@@ -64,12 +60,12 @@ public abstract class TheGameEngine {
         //All the cards played are present in his hand
         for (Integer card : cardsJustNumber) {
             if (!firstPlayer.cardIsInHand(card))
-                return false; // TODO Changer la façon de récuperre le int
+                return false; // TODO Changer la façon de récupère le int
         }
         // No duplicates
         if (duplicates(cardsJustNumber))return false;
 
-        CardTray cardTray = new CardTray(firstPlayer.getAscendingStack(), firstPlayer.getDownStack(), secondPlayer.getAscendingStack(), secondPlayer.getDownStack());
+        CardTray cardTray = new CardTray(firstPlayer, secondPlayer);
 
         for (String card : cardsPlay) {
             if (!cardTray.poseCard(card)) return false;
@@ -77,11 +73,9 @@ public abstract class TheGameEngine {
 
         //ToDo
         // Si tous c'est bien passer mettre a jour le plateau et retirer les cartes en main du joueur // a verifier
-       firstPlayer.setAscendingStack(cardTray.getAscendingAllyStack());
-       firstPlayer.setDownStack(cardTray.getDownAllyStack());
-       secondPlayer.setAscendingStack(cardTray.getAscendingEnemyStack());
-       secondPlayer.setDownStack(cardTray.getDownEnemyStack());
-       firstPlayer.removeCards(cardsJustNumber);
+        updateStacks(firstPlayer, secondPlayer, cardTray);
+
+        firstPlayer.removeCards(cardsJustNumber);
         //Todo
         // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher // a verifier
         int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
@@ -90,11 +84,21 @@ public abstract class TheGameEngine {
             cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
         }
         //ToDO
-        // revoyer les cartes joueur au joueur ennemie
+        // renvoyer les cartes joueur au joueur ennemie
         // ...
 
         return true;
     }
+
+    
+    //Update both players stacks at the end of a valid turn
+    private void updateStacks(Player firstPlayer, Player secondPlayer, CardTray cardTray){
+        firstPlayer.setAscendingStack(cardTray.getAscendingAllyStack());
+        firstPlayer.setDownStack(cardTray.getDownAllyStack());
+        secondPlayer.setAscendingStack(cardTray.getAscendingEnemyStack());
+        secondPlayer.setDownStack(cardTray.getDownEnemyStack());
+    }
+
     private boolean duplicates(ArrayList<Integer> cards) {
         for (Integer card : cards) {
             if (cards.contains(card)){
@@ -112,15 +116,15 @@ public abstract class TheGameEngine {
     private int calculationCardsDrawn(Player player1,CardTray cardTray ){
         if(cardTray.toPlayOnTheEnemyStack()){
         int numberCardsDrawn = Player.CARD_IN_HAND -  player1.getCardInHand().size();
-            if (player1.getPick().size() < numberCardsDrawn)return player1.getPick().size();
+            if (player1.getPile().size() < numberCardsDrawn)return player1.getPile().size();
             return numberCardsDrawn;
         }else{
-            if (player1.getPick().size()< 2)return player1.getPick().size();
+            if (player1.getPile().size()< 2)return player1.getPile().size();
             return 2;
         }
     }
     protected boolean playerWin(Player p1) {
-        return (p1.getCardInHand().size() == 0 && p1.getPick().size() == 0);// to reform
+        return (p1.getCardInHand().size() == 0 && p1.getPile().size() == 0);// to reform
     }
     //ToDO
     protected static String getWinner(Player p1, Player p2) {
