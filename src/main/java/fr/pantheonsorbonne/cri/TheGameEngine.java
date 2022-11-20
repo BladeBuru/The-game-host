@@ -4,10 +4,7 @@ import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public abstract class TheGameEngine {
 
@@ -100,7 +97,7 @@ public abstract class TheGameEngine {
     }
 
     private boolean cardsIsDuplicates(ArrayList<Integer> cards) {
-       ArrayList verifCards = new ArrayList<Integer>();
+       Set verifCards = new HashSet<Integer>();
         for (Integer card : cards) {
             if (verifCards.contains(card)){
                 return true;
