@@ -96,15 +96,9 @@ public abstract class TheGameEngine {
         secondPlayer.setDownStack(cardTray.getDownEnemyStack());
     }
 
-    private boolean cardsIsDuplicates(ArrayList<Integer> cards) {
-       Set verifCards = new HashSet<Integer>();
-        for (Integer card : cards) {
-            if (verifCards.contains(card)){
-                return true;
-            }
-            verifCards.add(card);
-        }
-        return false;
+    private  boolean cardsIsDuplicates(ArrayList<Integer> cards) {
+       Set verifCards = new HashSet<>(Arrays.asList(cards));
+       return verifCards.size() != cards.size();
     }
 
     private ArrayList<String> splitString(String cardsPlay) {
