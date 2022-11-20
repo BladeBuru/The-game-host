@@ -125,6 +125,52 @@ public abstract class TheGameEngine {
     return   "";
     }
 
+    //méthode choix carte
+    protected String setCardForFunction(String cardtoset, int whichset){
+        switch(whichset){
+            case 0: 
+                cardtoset = cardtoset + "vA";
+                break;
+            case 1:
+                cardtoset = cardtoset + "^A";
+                break;
+            case 2:
+                cardtoset = cardtoset + "vE";
+                break;
+            default:
+                cardtoset = cardtoset + "^E";
+                break;
+        }
+        return cardtoset;
+    }
+
+    // Nouvelle méthode player can play
+    protected boolean playerCanPlay(Player p1, Player p2){
+        CardTray cardtrayset = new CardTray(p1.getAscendingStack(), p1.getDownStack(), p2.getAscendingStack(), p2.getDownStack());
+        List<Integer> cardinhand= p1.getCardInHand();
+        for (int i=0; i<cardinhand.length(); i++){
+            String testcard1 = String.format("%02d",cardinhand[i]); //première carte
+            int j=0;
+            while(j<4){ //on passe chaque possibilité de construction premiere carte
+                testcard1=setCardForFunction(testcard1, i); //on set la possibilité
+                j++;
+                for(int k=0;k<cardinhand.length();k++){
+                    if(k==i){k++;}
+                    String testcard2 = String.format("%02d",cardinhand[k]); //deuxieme carte
+                    int h=0;
+                    while(h<4){ //on passe chaque possibilité de construction 2eme carte
+                        testcard2=setCardForFunction(testcard2, h); //on set la possibilité
+                        h++;
+                        if(cardtrayset.poseCard(testcard1) && cardtrayset.poseCard(testcard2)){ //on test si les deux se pose
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     protected abstract void declareWinner(String winner);
 
     protected abstract List<Integer> getCardsPlayed(Player player);
