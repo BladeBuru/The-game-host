@@ -63,7 +63,7 @@ public abstract class TheGameEngine {
                 return false; // TODO Changer la façon de récupère le int
         }
         // No duplicates
-        if (duplicates(cardsJustNumber))return false;
+        if (cardsIsDuplicates(cardsJustNumber))return false;
 
         CardTray cardTray = new CardTray(firstPlayer, secondPlayer);
 
@@ -90,7 +90,7 @@ public abstract class TheGameEngine {
         return true;
     }
 
-    
+
     //Update both players stacks at the end of a valid turn
     private void updateStacks(Player firstPlayer, Player secondPlayer, CardTray cardTray){
         firstPlayer.setAscendingStack(cardTray.getAscendingAllyStack());
@@ -99,11 +99,13 @@ public abstract class TheGameEngine {
         secondPlayer.setDownStack(cardTray.getDownEnemyStack());
     }
 
-    private boolean duplicates(ArrayList<Integer> cards) {
+    private boolean cardsIsDuplicates(ArrayList<Integer> cards) {
+       ArrayList verifCards = new ArrayList<Integer>();
         for (Integer card : cards) {
-            if (cards.contains(card)){
+            if (verifCards.contains(card)){
                 return true;
             }
+            verifCards.add(card);
         }
         return false;
     }
