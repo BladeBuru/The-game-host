@@ -27,7 +27,7 @@ public abstract class TheGameEngine {
 
             while (failureCounter < 3 ){
 
-                if( playRound(firstPlayer,secondPlayer,splitString(cardsPlay))){
+                if( playRound(firstPlayer,secondPlayer,splitString(new String()))){
                     break;
                 }
                 failureCounter++;
@@ -96,12 +96,12 @@ public abstract class TheGameEngine {
         secondPlayer.setDownStack(cardTray.getDownEnemyStack());
     }
 
-    private  boolean cardsIsDuplicates(ArrayList<Integer> cards) {
+    private static boolean cardsIsDuplicates(ArrayList<Integer> cards) {
        Set verifCards = new HashSet<>(Arrays.asList(cards));
        return verifCards.size() != cards.size();
     }
 
-    private ArrayList<String> splitString(String cardsPlay) {
+    private static ArrayList<String> splitString(String cardsPlay) {
         ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
         return cardsPlaySplit;
     }
@@ -146,22 +146,22 @@ public abstract class TheGameEngine {
 
     // Nouvelle méthode player can play
     protected boolean playerCanPlay(Player p1, Player p2){
-        CardTray cardtrayset = new CardTray(p1.getAscendingStack(), p1.getDownStack(), p2.getAscendingStack(), p2.getDownStack());
-        List<Integer> cardinhand= p1.getCardInHand();
-        for (int i=0; i<cardinhand.length(); i++){
-            String testcard1 = String.format("%02d",cardinhand[i]); //première carte
+        CardTray cardTraySet = new CardTray(p1.getAscendingStack(), p1.getDownStack(), p2.getAscendingStack(), p2.getDownStack());
+        List<Integer> cardInHand = p1.getCardInHand();
+        for (int i=0; i<cardInHand.size(); i++){
+            String testcard1 = String.format("%02d",cardInHand.get(i)); //première carte
             int j=0;
             while(j<4){ //on passe chaque possibilité de construction premiere carte
-                testcard1=setCardForFunction(testcard1, i); //on set la possibilité
+                String currentCard1 = setCardForFunction(testcard1, i); //on set la possibilité
                 j++;
-                for(int k=0;k<cardinhand.length();k++){
+                for(int k=0;k<cardInHand.size();k++){
                     if(k==i){k++;}
-                    String testcard2 = String.format("%02d",cardinhand[k]); //deuxieme carte
+                    String testcard2 = String.format("%02d",cardInHand.get(k)); //deuxieme carte
                     int h=0;
                     while(h<4){ //on passe chaque possibilité de construction 2eme carte
-                        testcard2=setCardForFunction(testcard2, h); //on set la possibilité
+                        String currentCard2 = setCardForFunction(testcard2, h); //on set la possibilité
                         h++;
-                        if(cardtrayset.poseCard(testcard1) && cardtrayset.poseCard(testcard2)){ //on test si les deux se pose
+                        if(cardTraySet.poseCard(currentCard1) && cardTraySet.poseCard(currentCard2)){ //on test si les deux se pose
                             return true;
                         }
                     }

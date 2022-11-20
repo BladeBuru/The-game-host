@@ -29,15 +29,15 @@ public class CardTray {
     }
 
     private boolean poseAscendingStackAlly(int card) {
-       if(card > this.ascendingAllyStack || card == this.ascendingAllyStack - 10){
-        this.ascendingAllyStack = card;
-        return true;
-       }
+        if(card > this.ascendingAllyStack || card == this.ascendingAllyStack - 10){
+            this.ascendingAllyStack = card;
+            return true;
+        }
         return false;
     }
 
     private boolean poseDownStackAlly(int card) {
-        if(card < this.ascendingAllyStack || card == this.ascendingAllyStack + 10){
+        if(card < this.downAllyStack || card == this.downAllyStack + 10){
             this.downAllyStack = card;
             return true;
         }
@@ -54,7 +54,7 @@ public class CardTray {
     }
 
     private boolean poseDownStackEnemy(int card) {
-        if(card > this.ascendingEnemyStack && this.playEnemyStack == false){
+        if(card > this.downEnemyStack && this.playEnemyStack == false){
             this.downEnemyStack = card;
             this.playEnemyStack = true;
             return true;
@@ -67,28 +67,28 @@ public class CardTray {
         // TODO WARNING truc pas beau a modifier récupère le next number et les next char
 
         int value = Integer.parseInt( card.substring(0,2));
-        char typeStack =card.charAt(2);
+        char typeStack = card.charAt(2);
         char whichSide = card.charAt(3);
 
         //ToDo
         //ToDo
 
 
-       if(whichSide == CHARACTER_ALLY){
-           if (typeStack == CHARACTER_ASCENDING_STACK){
-               return  this.poseAscendingStackAlly(value);
-           } else if (typeStack == CHARACTER_DOWN_STACK) {
-               return this.poseDownStackAlly(value);
-           }
-           return  false;
-       }
+        if(whichSide == CHARACTER_ALLY){
+            if (typeStack == CHARACTER_ASCENDING_STACK){
+                return  this.poseAscendingStackAlly(value);
+            } else if (typeStack == CHARACTER_DOWN_STACK) {
+                return this.poseDownStackAlly(value);
+            }
+            return  false;
+        }
 
 
         if(whichSide == CHARACTER_ENEMY){
             if (typeStack == CHARACTER_ASCENDING_STACK){
                 return this.poseAscendingStackEnemy(value);
             } else if (typeStack == CHARACTER_DOWN_STACK) {
-               return this.poseDownStackEnemy(value);
+                return this.poseDownStackEnemy(value);
             }
         }
         return false;
