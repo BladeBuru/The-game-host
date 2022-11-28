@@ -152,14 +152,14 @@ public abstract class TheGameEngine {
             String testcard1 = String.format("%02d",cardInHand.get(i)); //première carte
             int j=0;
             while(j<4){ //on passe chaque possibilité de construction premiere carte
-                String currentCard1 = setCardForFunction(testcard1, i); //on set la possibilité
+                String currentCard1 = setCardForFunction(testcard1, j); //on set la possibilité todo erreur
                 j++;
                 for(int k=0;k<cardInHand.size();k++){
                     if(k==i){k++;}
                     String testcard2 = String.format("%02d",cardInHand.get(k)); //deuxieme carte
                     int h=0;
-                    while(h<4){ //on passe chaque possibilité de construction 2eme carte
-                        String currentCard2 = setCardForFunction(testcard2, h); //on set la possibilité
+                    while(h<4){ //on passe chaque possibilité de construction 2ème carte
+                        String currentCard2 = setCardForFunction(testcard2, h); //on Set la possibilité
                         h++;
                         if(cardTraySet.poseCard(currentCard1) && cardTraySet.poseCard(currentCard2)){ //on test si les deux se pose
                             return true;
@@ -174,5 +174,7 @@ public abstract class TheGameEngine {
     protected abstract void declareWinner(String winner);
 
     protected abstract List<Integer> getCardsPlayed(Player player);
+
+    protected abstract List<Integer> giveCardsPlayed(Player player, String cards);
 
 }
