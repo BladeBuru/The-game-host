@@ -1,4 +1,4 @@
-package fr.pantheonsorbonne.cri;
+/*package fr.pantheonsorbonne.cri;
 import fr.pantheonsorbonne.miage.game.Card;
 import fr.pantheonsorbonne.miage.model.Game;
 import fr.pantheonsorbonne.miage.model.GameCommand;
@@ -28,7 +28,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
 
         TheGameEngine host = new TheGameEngineNetwork(hostFacade, ourGame.getPlayers(), ourGame);
         host.play();
-    }*/
+    }
 
     //...
-}
+}*/

@@ -1,4 +1,4 @@
-package fr.pantheonsorbonne.cri;
+/*package fr.pantheonsorbonne.cri;
 
 import fr.pantheonsorbonne.cri.game.Player;
 
@@ -19,3 +19,4 @@ public class LocalTheGame extends TheGameEngine{
         localTheGame.play();
     }
 }
+*/

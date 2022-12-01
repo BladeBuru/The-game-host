@@ -66,34 +66,6 @@ public class CardTrayTest
         assertEquals(false, cardTray.poseCard(card));
     }
 
-    @Test
-    public void isPoseAscendingStackAllyTrue()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(true, cardTray.poseAscendingStackAlly(5));
-        assertEquals(true, cardTray.poseAscendingStackAlly(20));
-    }
-
-    @Test
-    public void isPoseAscendingStackAllyFalse()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(false, cardTray.poseAscendingStackAlly(10));
-    }
-
-    @Test
-    public void isPoseAscendingStackEnemyTrue()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(true, cardTray.poseAscendingStackEnemy(15));
-    }
-
-    @Test
-    public void isPoseAscendingStackEnemyFalse()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(false, cardTray.poseAscendingStackEnemy(25));
-    }
 
     @Test
     public void isPoseDownStackAllyTrue()
@@ -103,25 +75,6 @@ public class CardTrayTest
         assertEquals(true, cardTray.poseCard("40vA"));
     }
 
-    @Test
-    public void isPoseDownStackAllyFalse()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(false, cardTray.poseDownStackAlly(50));
-    }
 
-    @Test
-    public void isPoseDownStackEnemyTrue()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(true, cardTray.poseDownStackEnemy(45));
-    }
-
-    @Test
-    public void isPoseDownStackEnemyFalse()
-    {
-        CardTray cardTray = new CardTray(15,45,20,40);
-        assertEquals(false, cardTray.poseDownStackEnemy(25));
-    }
 
 }
