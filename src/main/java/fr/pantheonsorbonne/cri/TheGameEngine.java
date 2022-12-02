@@ -20,38 +20,38 @@ public abstract class TheGameEngine {
             players.get(1).setName(playersName.get(1));
         }
 
-        for (Player player: players ) {
-            giveCardsPlayed(player.getName(), player.getDrawCards(Player.CARD_IN_HAND));
+        for (Player player : players) {
+            giveCardsPlayer(player.getName(), player.getDrawCards(Player.CARD_IN_HAND));
 
         }
 
-        //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         while (true) {
             Player firstPlayer = players.pop();
             Player secondPlayer = players.pop();
             players.push(firstPlayer);
             players.push(secondPlayer);
-            //TODO
-            // récupère les cartes joué par le premier joueur
-            // throw une erreur
-
-                if (playRound(firstPlayer, secondPlayer,getCardsPlayed(firstPlayer.ge tName()))) {
-                    break;
+            //Test if a player has lost (He can't play at least two cards)
+            if (!playerCanPlay(firstPlayer, secondPlayer)) {
+                declareWinner(secondPlayer.getName());
+                break;
+            }
+            if (playRound(firstPlayer, secondPlayer, getCardsPlayed(firstPlayer.getName()))) {
+                break;
+            }
+            // Test if a player to win (He has no more cards in his hand and in the draw pile)
+            if (playerWin(firstPlayer)){
+                declareWinner(firstPlayer.getName());
+                break;
             }
 
+
         }
-
-
 
 
     }
 
 
-
-    protected abstract boolean setPiles(/*...*/);
-
-    protected abstract void giveCardsToPlayer(/*...*/);
 
     protected boolean playRound(Player firstPlayer, Player secondPlayer, ArrayList<String> cardsPlay) {
         //Minimum two cards played and maximum number in hand
@@ -63,30 +63,27 @@ public abstract class TheGameEngine {
             if (!firstPlayer.cardIsInHand(card))
                 return false; // TODO Changer la façon de récupère le int
         }
-        // No duplicates
+
         if (cardsIsDuplicates(cardsJustNumber)) return false;
 
+        //Copies cards on the table so as not to modify the original in case of false. CardTray has the break rules
         CardTray cardTray = new CardTray(firstPlayer, secondPlayer);
 
+        //If all the cards have been placed it means that it went well
         for (String card : cardsPlay) {
             if (!cardTray.poseCard(card)) return false;
         }
 
-        //ToDo
-        // Si tous c'est bien passer mettre a jour le plateau et retirer les cartes en main du joueur // a verifier
         updateStacks(firstPlayer, secondPlayer, cardTray);
 
         firstPlayer.removeCards(cardsJustNumber);
-        //Todo
-        // calculer le nombre de carte à piocher piocher et renvoyer les cartes à piocher // a verifier
+
         int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
         String cardsDraw = new String();
         if (numberCardsDrawn > 0) {
             cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
         }
-        //ToDO
-        // renvoyer les cartes joueur au joueur ennemie
-        // ...
+        giveCardsPlayer(firstPlayer.getName(), cardsDraw);
 
         return true;
     }
@@ -98,6 +95,9 @@ public abstract class TheGameEngine {
         firstPlayer.setDownStack(cardTray.getDownAllyStack());
         secondPlayer.setAscendingStack(cardTray.getAscendingEnemyStack());
         secondPlayer.setDownStack(cardTray.getDownEnemyStack());
+
+        updateStacksPlayer(firstPlayer.getName(),cardTray.getAscendingAllyStack(),cardTray.getDownAllyStack(),cardTray.getAscendingEnemyStack(),cardTray.getDownEnemyStack());
+        updateStacksPlayer(secondPlayer.getName(),cardTray.getAscendingEnemyStack(),cardTray.getDownEnemyStack(),cardTray.getAscendingAllyStack(),cardTray.getDownAllyStack());
     }
 
     private static boolean cardsIsDuplicates(ArrayList<Integer> cards) {
@@ -105,10 +105,35 @@ public abstract class TheGameEngine {
         return verifCards.size() != cards.size();
     }
 
-    private static ArrayList<String> splitString(String cardsPlay) {
+    protected static ArrayList<String> splitString(String cardsPlay) {
         ArrayList<String> cardsPlaySplit = new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
         return cardsPlaySplit;
     }
+
+    protected static ArrayList<Integer> splitInteger(String cardsPlay) {
+        ArrayList<String> cardsPlaySplit =  new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
+        ArrayList<Integer> newList = new ArrayList<Integer>(cardsPlaySplit.size()) ;
+        for (String myInt : cardsPlaySplit)
+        {
+            newList.add(Integer.valueOf(myInt));
+        }
+        return newList;
+    }
+
+
+
+    protected static String convertToData(ArrayList<String> cards){
+        StringBuilder dataMessage = new StringBuilder();
+        for(String card : cards){
+            dataMessage.append(card);
+            if(card != cards.get(cards.size()-1)) {
+                dataMessage.append(",");
+            }
+        }
+        return dataMessage.toString();
+    }
+
+
 
     private int calculationCardsDrawn(Player player1, CardTray cardTray) {
         if (cardTray.toPlayOnTheEnemyStack()) {
@@ -125,11 +150,6 @@ public abstract class TheGameEngine {
         return (p1.getCardInHand().size() == 0 && p1.getPile().size() == 0);// to reform
     }
 
-    //ToDO
-    protected static String getWinner(Player p1, Player p2) {
-        //ToDO
-        return "";
-    }
 
     //méthode choix carte
     protected String setCardForFunction(String cardtoset, int whichset) {
@@ -177,11 +197,15 @@ public abstract class TheGameEngine {
         }
         return false;
     }
-    protected abstract List<String> getInitialPlayers() ;
+
+    protected abstract List<String> getInitialPlayers();
+
     protected abstract void declareWinner(String winner);
 
     protected abstract ArrayList<String> getCardsPlayed(String player);
 
-    protected abstract List<Integer> giveCardsPlayed(String player, String cards);
+    protected abstract void giveCardsPlayer(String player, String cards);
+
+    protected abstract void updateStacksPlayer(String player,int ascendingStackAlly,int downStackAlly,int ascendingStackEnemy, int downStackEnemy);
 
 }

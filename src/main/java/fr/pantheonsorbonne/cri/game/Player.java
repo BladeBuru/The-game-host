@@ -62,10 +62,11 @@ public class Player {
 
     public String getDrawCards(int numberOfCardsToDraw) {
         StringBuilder stringHand = new StringBuilder();
-        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND && this.cardInHand.size() > 0; l++) {
+        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND && this.pile.size() > 0; l++) {
             this.cardInHand.add(this.pile.get(this.pile.size() - 1));
+            if (l>0)stringHand.append(',');
             stringHand.append(this.pile.size() - 1);
-            stringHand.append(' ');
+
             this.pile.remove(this.pile.size() - 1);
         }
         Collections.sort(this.cardInHand);
