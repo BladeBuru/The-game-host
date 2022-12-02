@@ -96,5 +96,13 @@ public class Player {
     public void setDownStack(int downStack) {
         this.downStack = downStack;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
 }
 

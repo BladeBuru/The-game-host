@@ -14,7 +14,7 @@ public class GuestTest {
         p1.updateStack(20,53,17,48);
         p1.getCardsFrom(new ArrayList<>(Arrays.asList(13,25,36,54)));
         //p1.getCardsFrom(new ArrayList<>(Arrays.asList(54,20,13,36,10)));
-        System.out.println("test");
+        System.out.println("Result : \n");
         System.out.println(p1.bestMoov());
     }
 }

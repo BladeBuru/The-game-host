@@ -14,7 +14,19 @@ public abstract class TheGameEngine {
         players.push(new Player());
         players.push(new Player());
 
+        {
+            ArrayList<String> playersName = (ArrayList) getInitialPlayers();
+            players.get(0).setName(playersName.get(0));
+            players.get(1).setName(playersName.get(1));
+        }
+
+        for (Player player: players ) {
+            giveCardsPlayed(player.getName(), player.getDrawCards(Player.CARD_IN_HAND));
+
+        }
+
         //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         while (true) {
             Player firstPlayer = players.pop();
             Player secondPlayer = players.pop();
@@ -23,26 +35,18 @@ public abstract class TheGameEngine {
             //TODO
             // récupère les cartes joué par le premier joueur
             // throw une erreur
-            int failureCounter = 0;
 
-            while (failureCounter < 3) {
-
-                if (playRound(firstPlayer, secondPlayer, splitString(new String()))) {
+                if (playRound(firstPlayer, secondPlayer,getCardsPlayed(firstPlayer.ge tName()))) {
                     break;
-                }
-                failureCounter++;
             }
 
         }
 
-        //Todo
-        // Jouer des round en inversant a chaque fois les joueur
 
-        //Todo
-        // si le round n'a pas été joué renvoyer les cartes au joueur et si plus de 3x arrête le jeu
 
 
     }
+
 
 
     protected abstract boolean setPiles(/*...*/);
@@ -173,11 +177,11 @@ public abstract class TheGameEngine {
         }
         return false;
     }
-
+    protected abstract List<String> getInitialPlayers() ;
     protected abstract void declareWinner(String winner);
 
-    protected abstract List<Integer> getCardsPlayed(Player player);
+    protected abstract ArrayList<String> getCardsPlayed(String player);
 
-    protected abstract List<Integer> giveCardsPlayed(Player player, String cards);
+    protected abstract List<Integer> giveCardsPlayed(String player, String cards);
 
 }

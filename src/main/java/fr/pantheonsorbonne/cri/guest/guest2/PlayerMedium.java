@@ -132,7 +132,7 @@ public class PlayerMedium extends PlayerEngine {
             actualMoov.remove(actualMoov.size() - 1);
         }
 
-        System.out.println(bestMoov.bestMoov);
+
         return bestMoov.bestMoov;
     }
 
@@ -141,7 +141,6 @@ public class PlayerMedium extends PlayerEngine {
     public String bestMoov() {
         Integer bestScore = Integer.MAX_VALUE;
         ArrayList<String> bestMoov = calculateBestMoov(new ArrayList<>(), new ArrayList<>(),new BestMoov() );
-        System.out.println(bestMoov);
         String bestMoovString ="";
         for (int i = 0; i < bestMoov.size(); i++) {
             if (i !=0){
