@@ -25,11 +25,11 @@ public class Player {
         }
         Collections.shuffle(pile);
         this.cardInHand = new ArrayList<>(CARD_IN_HAND);
-        getDrawCards(CARD_IN_HAND);
+        //getDrawCards(CARD_IN_HAND);
     }
 
     public Player() {
-        new Player(VALUE_DOWN_STACK);
+        this(VALUE_DOWN_STACK);
     }
 
     public boolean cardIsInHand(int number) {
@@ -61,11 +61,12 @@ public class Player {
     }
 
     public String getDrawCards(int numberOfCardsToDraw) {
-        StringBuilder stringHand = new StringBuilder();
-        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() <= CARD_IN_HAND && this.pile.size() > 0; l++) {
+        //StringBuilder stringHand = new StringBuilder();
+        String stringHand = new String();
+        for (int l = 0; l < numberOfCardsToDraw && this.cardInHand.size() < CARD_IN_HAND && this.pile.size() > 0; l++) {
             this.cardInHand.add(this.pile.get(this.pile.size() - 1));
-            if (l>0)stringHand.append(',');
-            stringHand.append(this.pile.size() - 1);
+            if (l>0)stringHand += ',';
+            stringHand += this.pile.get(this.pile.size() - 1);
 
             this.pile.remove(this.pile.size() - 1);
         }
@@ -104,6 +105,14 @@ public class Player {
 
     public String getName() {
         return this.name;
+    }
+
+    public String ToString(){
+        return this.name +
+                " ^[" + String.format("%02d",this.ascendingStack) + "] " +
+                "v[" + String.format("%02d",this.downStack) + "]" +
+                " (In hand : " + this.cardInHand.size()+ "In pile : " + this.pile.size() + ")\n" + cardInHand;
+
     }
 }
 
