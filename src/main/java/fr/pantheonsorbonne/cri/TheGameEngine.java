@@ -36,7 +36,9 @@ public abstract class TheGameEngine {
                 declareWinner(secondPlayer.getName());
                 break;
             }
-            if (playRound(firstPlayer, secondPlayer, getCardsPlayed(firstPlayer.getName()))) {
+            ArrayList<String> cardsPlaying =getCardsPlayed(firstPlayer.getName());
+            ToStringRound(firstPlayer,secondPlayer, cardsPlaying);
+            if (!playRound(firstPlayer, secondPlayer,cardsPlaying )) {
                 break;
             }
             // Test if a player to win (He has no more cards in his hand and in the draw pile)
@@ -51,6 +53,12 @@ public abstract class TheGameEngine {
 
     }
 
+    private void ToStringRound(Player firstPlayer, Player secondPlayer, ArrayList<String> cardsPlaying) {
+
+        System.out.println(firstPlayer.ToString());
+        System.out.println(secondPlayer.ToString());
+        System.out.println(firstPlayer.getName() + " play : "+ cardsPlaying + "\n\n");
+    }
 
 
     protected boolean playRound(Player firstPlayer, Player secondPlayer, ArrayList<String> cardsPlay) {
@@ -61,7 +69,7 @@ public abstract class TheGameEngine {
         //All the cards played are present in his hand
         for (Integer card : cardsJustNumber) {
             if (!firstPlayer.cardIsInHand(card))
-                return false; // TODO Changer la façon de récupère le int
+                return false;
         }
 
         if (cardsIsDuplicates(cardsJustNumber)) return false;
@@ -73,7 +81,6 @@ public abstract class TheGameEngine {
         for (String card : cardsPlay) {
             if (!cardTray.poseCard(card)) return false;
         }
-
         updateStacks(firstPlayer, secondPlayer, cardTray);
 
         firstPlayer.removeCards(cardsJustNumber);
@@ -81,6 +88,7 @@ public abstract class TheGameEngine {
         int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
         String cardsDraw = new String();
         if (numberCardsDrawn > 0) {
+            System.out.println(firstPlayer.getName()+ "drawn : " + cardsDraw + " cards");
             cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
         }
         giveCardsPlayer(firstPlayer.getName(), cardsDraw);
@@ -101,7 +109,10 @@ public abstract class TheGameEngine {
     }
 
     private static boolean cardsIsDuplicates(ArrayList<Integer> cards) {
-        Set verifCards = new HashSet<>(Arrays.asList(cards));
+        HashMap<Integer,Integer> verifCards = new HashMap();
+        for (Integer card:cards){
+            verifCards.put(card,card);
+        }
         return verifCards.size() != cards.size();
     }
 

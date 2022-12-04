@@ -1,5 +1,6 @@
 package fr.pantheonsorbonne.cri.guest.guest2;
 
+import fr.pantheonsorbonne.cri.TheGameEngine;
 import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;
 
@@ -81,6 +82,7 @@ public class PlayerMedium extends PlayerEngine {
     public String bestMoov() {
         Integer bestScore = Integer.MAX_VALUE;
         ArrayList<String> bestMoov = calculateBestMoov(new ArrayList<>(), new ArrayList<>(),new BestMoov() );
+        removeCardsInHand(bestMoov);
         String bestMoovString ="";
         for (int i = 0; i < bestMoov.size(); i++) {
             if (i !=0){
@@ -91,6 +93,13 @@ public class PlayerMedium extends PlayerEngine {
         return bestMoovString ;
     }
 
+    private void removeCardsInHand( ArrayList<String> bestMoov){
+
+        for (String card:bestMoov) {
+           this.cardInHand.remove( this.cardInHand.indexOf(Integer.parseInt( card.substring(0,2)))) ;
+        }
+
+    }
 
 
 }
