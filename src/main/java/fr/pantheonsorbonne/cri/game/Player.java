@@ -111,7 +111,7 @@ public class Player {
         return this.name +
                 " ^[" + String.format("%02d",this.ascendingStack) + "] " +
                 "v[" + String.format("%02d",this.downStack) + "]" +
-                " (In hand : " + this.cardInHand.size()+ "In pile : " + this.pile.size() + ")\n" + cardInHand;
+                " (In hand : " + this.cardInHand.size()+ " In pile : " + this.pile.size() + ")\n" + cardInHand;
 
     }
 }

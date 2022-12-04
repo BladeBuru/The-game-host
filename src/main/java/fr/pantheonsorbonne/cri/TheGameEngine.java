@@ -57,7 +57,7 @@ public abstract class TheGameEngine {
 
         System.out.println(firstPlayer.ToString());
         System.out.println(secondPlayer.ToString());
-        System.out.println(firstPlayer.getName() + " play : "+ cardsPlaying + "\n\n");
+        System.out.println(firstPlayer.getName() + " play : "+ cardsPlaying );
     }
 
 
@@ -88,7 +88,7 @@ public abstract class TheGameEngine {
         int numberCardsDrawn = calculationCardsDrawn(firstPlayer, cardTray);
         String cardsDraw = new String();
         if (numberCardsDrawn > 0) {
-            System.out.println(firstPlayer.getName()+ "drawn : " + cardsDraw + " cards");
+            System.out.println(firstPlayer.getName()+ " drawn : " + numberCardsDrawn + " cards\n\n");
             cardsDraw = firstPlayer.getDrawCards(numberCardsDrawn);
         }
         giveCardsPlayer(firstPlayer.getName(), cardsDraw);
@@ -122,13 +122,15 @@ public abstract class TheGameEngine {
     }
 
     protected static ArrayList<Integer> splitInteger(String cardsPlay) {
-        ArrayList<String> cardsPlaySplit =  new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
-        ArrayList<Integer> newList = new ArrayList<Integer>(cardsPlaySplit.size()) ;
-        for (String myInt : cardsPlaySplit)
-        {
-            newList.add(Integer.valueOf(myInt));
-        }
-        return newList;
+
+            ArrayList<String> cardsPlaySplit =  new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
+            ArrayList<Integer> newList = new ArrayList<Integer>(cardsPlaySplit.size()) ;
+            for (String myInt : cardsPlaySplit)
+            {
+                newList.add(Integer.valueOf(myInt));
+            }
+            return newList;
+
     }
 
 

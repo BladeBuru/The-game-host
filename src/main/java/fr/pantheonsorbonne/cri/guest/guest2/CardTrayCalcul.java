@@ -6,7 +6,11 @@ import fr.pantheonsorbonne.cri.game.Player;
 import java.util.ArrayList;
 
 public class CardTrayCalcul extends CardTray {
-    protected int score ;
+    protected int score;
+
+    private int bonusPerCardPlayed = 3;
+    private int malusCardPlayedOnEnemy = 1;
+    //private int bonusCardPlayedOnAlly = 1;
 
     public CardTrayCalcul(int ascendingStackAlly, int downAllyStack, int ascendingEnemyStack, int downEnemyStack) {
         super(ascendingStackAlly, downAllyStack, ascendingEnemyStack, downEnemyStack);
@@ -19,6 +23,11 @@ public class CardTrayCalcul extends CardTray {
 
     public CardTrayCalcul(PlayerEngine player){
         this(player.getAscendingStack(),player.getDownStack(), player.getAscendingStackEnemy(), player.getDownStackEnemy());
+    }
+    public CardTrayCalcul(PlayerEngine player,int bonusPerCardPlayed, int malusCardPlayedOnEnemy){
+        this(player);
+        this.malusCardPlayedOnEnemy = malusCardPlayedOnEnemy;
+        this.bonusPerCardPlayed = bonusPerCardPlayed;
     }
 
     @Override
@@ -45,7 +54,7 @@ public class CardTrayCalcul extends CardTray {
     @Override
     protected boolean poseAscendingStackEnemy(int card) {
         if(card < this.ascendingEnemyStack && this.playEnemyStack == false){
-            score += this.ascendingEnemyStack - card +1;
+            score += this.ascendingEnemyStack - card + malusCardPlayedOnEnemy;
             this.ascendingEnemyStack = card;
             this.playEnemyStack = true;
            return true;
@@ -55,7 +64,7 @@ public class CardTrayCalcul extends CardTray {
     @Override
     protected boolean poseDownStackEnemy(int card) {
         if(card > this.downEnemyStack && this.playEnemyStack == false){
-            score += card  - this.downEnemyStack + 1;
+            score += card  - this.downEnemyStack + malusCardPlayedOnEnemy;
             this.downEnemyStack = card;
             this.playEnemyStack = true;
            return true;
@@ -69,7 +78,7 @@ public class CardTrayCalcul extends CardTray {
             if (!poseCard(card)) valid = false ;
         }
 
-        score -= cards.size() * 3;
+        score -= cards.size() * bonusPerCardPlayed;
         return valid;
     }
 

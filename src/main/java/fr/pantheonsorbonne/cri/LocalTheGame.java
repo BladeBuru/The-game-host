@@ -2,32 +2,39 @@ package fr.pantheonsorbonne.cri;
 
 import fr.pantheonsorbonne.cri.game.Player;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
+import fr.pantheonsorbonne.cri.guest.guest2.PlayerHard;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerMedium;
 
 import java.util.*;
 
-public class LocalTheGame extends TheGameEngine{
-
+public class LocalTheGame extends TheGameEngine {
+   static   HashMap<String, Integer> scores = new HashMap<>();
     private final Map<String, PlayerEngine> players;
-    public  LocalTheGame(){
+
+    public LocalTheGame() {
         players = new HashMap<>();
-        for (int i = 1; i < 3; i++) {
-            players.put("joueur "+i,new PlayerMedium("joueur "+i));
-        }
+
+        players.put("joueur 1", new PlayerHard("joueur 1" ,1,1));
+        players.put("joueur 2" , new PlayerHard("joueur 2",0,1));
+
 
     }
 
     public static void main(String[] args) {
 
+        int i = 0;
+        while (i < 100) {
+            LocalTheGame localTheGame = new LocalTheGame();
+            localTheGame.play();
+            i++;
+        }
 
-        LocalTheGame localTheGame = new LocalTheGame();
-        localTheGame.play();
     }
 
     @Override
     protected List<String> getInitialPlayers() {
         ArrayList<String> initialPlayers = new ArrayList<String>();
-        for (Map.Entry player:   this.players.entrySet()) {
+        for (Map.Entry player : this.players.entrySet()) {
             initialPlayers.add((String) player.getKey());
         }
 
@@ -36,24 +43,33 @@ public class LocalTheGame extends TheGameEngine{
 
     @Override
     protected void declareWinner(String winner) {
-
+        if (this.scores.containsKey(winner)){
+            this.scores.put(winner, scores.get(winner).intValue() + 1);
+            //this.scores.put(winner, scores.getOrDefault((winner), 1).intValue() + 1);
+        }else {
+            this.scores.put(winner, 1);
+        }
         System.out.println(winner + " has won!");
+        System.out.println("\n\n");
+        for (Map.Entry score : this.scores.entrySet()) {
+            System.out.println("Joueur " + score.getKey() + " win " + score.getValue());
+        }
 
     }
 
     @Override
     protected ArrayList<String> getCardsPlayed(String player) {
-        return this.splitString( this.players.get(player).bestMoov());
+        return this.splitString(this.players.get(player).bestMoov());
     }
 
     @Override
     protected void giveCardsPlayer(String player, String cards) {
-        this.players.get(player).getCardsFrom(this.splitInteger(cards));
+        if (cards.length() != 0 )this.players.get(player).getCardsFrom(this.splitInteger(cards));
 
     }
 
     @Override
     protected void updateStacksPlayer(String player, int ascendingStackAlly, int downStackAlly, int ascendingStackEnemy, int downStackEnemy) {
-        this.players.get(player).updateStack(ascendingStackAlly,downStackAlly,ascendingStackEnemy,downStackEnemy);
+        this.players.get(player).updateStack(ascendingStackAlly, downStackAlly, ascendingStackEnemy, downStackEnemy);
     }
 }
