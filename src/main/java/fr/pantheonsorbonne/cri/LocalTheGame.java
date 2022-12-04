@@ -14,8 +14,8 @@ public class LocalTheGame extends TheGameEngine {
     public LocalTheGame() {
         players = new HashMap<>();
 
-        players.put("joueur 1", new PlayerHard("joueur 1" ,1,1));
-        players.put("joueur 2" , new PlayerHard("joueur 2",0,1));
+        players.put("joueur 1", new PlayerHard("joueur 1" ,-1,-1));
+        players.put("joueur 2" , new PlayerHard("joueur 2",-1,0));
 
 
     }

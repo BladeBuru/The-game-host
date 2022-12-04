@@ -1,7 +1,14 @@
-/*package fr.pantheonsorbonne.cri;
-import fr.pantheonsorbonne.miage.game.Card;
+package fr.pantheonsorbonne.cri;
+
+import fr.pantheonsorbonne.miage.Facade;
+import fr.pantheonsorbonne.miage.HostFacade;
 import fr.pantheonsorbonne.miage.model.Game;
 import fr.pantheonsorbonne.miage.model.GameCommand;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class TheGameEngineNetwork extends TheGameEngine {
 
     private static final int PLAYER_COUNT = 3;
@@ -16,7 +23,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
         this.ourGame = ourGame;
     }
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         HostFacade hostFacade = Facade.getFacade();
         hostFacade.waitReady;
 
@@ -30,5 +37,29 @@ public class TheGameEngineNetwork extends TheGameEngine {
         host.play();
     }
 
-    //...
-}*/
+
+    @Override
+    protected List<String> getInitialPlayers() {
+        return null;
+    }
+
+    @Override
+    protected void declareWinner(String winner) {
+
+    }
+
+    @Override
+    protected ArrayList<String> getCardsPlayed(String player) {
+        return null;
+    }
+
+    @Override
+    protected void giveCardsPlayer(String player, String cards) {
+
+    }
+
+    @Override
+    protected void updateStacksPlayer(String player, int ascendingStackAlly, int downStackAlly, int ascendingStackEnemy, int downStackEnemy) {
+
+    }
+}
