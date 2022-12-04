@@ -53,14 +53,15 @@ public class Player1Hard extends PlayerEngine {
                 indiceCardToDelete = j;
             }
         }
-        if (cardToPose.equals("")){
+        if (cardToPose.equals("")) {
             for (int k = 0; k < cardInHand.size(); k++) {
                 String testcard2 = String.format("%02d", cardInHand.get(k));
                 int h = 0;
                 while (h < 4) {
                     String currentCard2 = setCardForFunction(testcard2, h);
                     h++;
-                    if (cardTrayTest.poseCard(currentCard2)){
+                    if (cardTrayTest.poseCard(currentCard2)) {
+                        cardInHand.remove(k);
                         return currentCard2;
                     }
                 }
@@ -118,18 +119,19 @@ public class Player1Hard extends PlayerEngine {
             cardsToPose = cardsToPose + "," + secondCard;
 
         } else {
-            cardsToPose = cardPoseEnnemy(cardTraySet, cardInHand);
-            if (!cardsToPose.equals("")) {
-                cardsToPose = cardsToPose + "," + firstCardToPose(cardTraySet, cardInHand);
-            } else {
-                cardsToPose = firstCardToPose(cardTraySet,cardInHand);
-                String secondCard="";
-                secondCard=lessTen(cardTraySet, cardInHand);
-                if(!secondCard.equals("")){
-                    return cardsToPose + "," + secondCard;
-                }
-                cardsToPose = cardsToPose + "," + firstCardToPose(cardTraySet, cardInHand);
+            cardsToPose = firstCardToPose(cardTraySet,cardInHand);
+            String secondCard="";
+            secondCard=lessTen(cardTraySet, cardInHand);
+            if(!secondCard.equals("")){
+                return cardsToPose + "," + secondCard;
             }
+
+            secondCard=cardPoseEnnemy(cardTraySet, cardInHand);
+            if (!secondCard.equals("")){
+                return cardsToPose + "," + secondCard;
+            }
+            
+            cardsToPose = cardsToPose + "," + firstCardToPose(cardTraySet, cardInHand);
         }
         return cardsToPose;
     }

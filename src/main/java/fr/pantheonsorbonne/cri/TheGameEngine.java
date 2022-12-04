@@ -39,6 +39,7 @@ public abstract class TheGameEngine {
             ArrayList<String> cardsPlaying =getCardsPlayed(firstPlayer.getName());
             ToStringRound(firstPlayer,secondPlayer, cardsPlaying);
             if (!playRound(firstPlayer, secondPlayer,cardsPlaying )) {
+                declareWinner(secondPlayer.getName());
                 break;
             }
             // Test if a player to win (He has no more cards in his hand and in the draw pile)
