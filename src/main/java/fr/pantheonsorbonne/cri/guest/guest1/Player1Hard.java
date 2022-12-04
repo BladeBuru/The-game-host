@@ -31,24 +31,40 @@ public class Player1Hard extends PlayerEngine {
         return oneCardToPose;
     }
 
-    public String firstCardToPose(CardTray cardTrayTest, List<Integer> cardInHand){
+    public String firstCardToPose(CardTray cardTrayTest, List<Integer> cardInHand) {
         String cardToPose = "";
-        int diff=100;
-        int indiceCardToDelete=-1;
-        //récup carte intéréssante pour ascendingCard
-        for(int i=0; i<cardInHand.size();i++){
-            if(cardInHand.get(i)>cardTrayTest.getAscendingAllyStack() && Math.abs(cardInHand.get(i)-cardTrayTest.getAscendingAllyStack())<diff){
-                diff=Math.abs(cardInHand.get(i)-cardTrayTest.getAscendingAllyStack());
-                cardToPose=String.format("%02d", cardInHand.get(i))+"^A";
-                indiceCardToDelete=i;
+        int diff = 100;
+        int indiceCardToDelete = -1;
+        // récup carte intéréssante pour ascendingCard
+        for (int i = 0; i < cardInHand.size(); i++) {
+            if (cardInHand.get(i) > cardTrayTest.getAscendingAllyStack()
+                    && Math.abs(cardInHand.get(i) - cardTrayTest.getAscendingAllyStack()) < diff) {
+                diff = Math.abs(cardInHand.get(i) - cardTrayTest.getAscendingAllyStack());
+                cardToPose = String.format("%02d", cardInHand.get(i)) + "^A";
+                indiceCardToDelete = i;
             }
         }
-        //récup carte intéréssante pour downStack
-        for(int j=cardInHand.size()-1;j>=0;j--){
-            if (cardInHand.get(j)<cardTrayTest.getDownAllyStack() && Math.abs(cardInHand.get(j)-cardTrayTest.getDownAllyStack())<diff){
-                diff=Math.abs(cardInHand.get(j)-cardTrayTest.getDownAllyStack());
-                cardToPose=String.format("%02d", cardInHand.get(j))+"vA";
-                indiceCardToDelete=j;
+        // récup carte intéréssante pour downStack
+        for (int j = cardInHand.size() - 1; j >= 0; j--) {
+            if (cardInHand.get(j) < cardTrayTest.getDownAllyStack()
+                    && Math.abs(cardInHand.get(j) - cardTrayTest.getDownAllyStack()) < diff) {
+                diff = Math.abs(cardInHand.get(j) - cardTrayTest.getDownAllyStack());
+                cardToPose = String.format("%02d", cardInHand.get(j)) + "vA";
+                indiceCardToDelete = j;
+            }
+        }
+        if (cardToPose.equals("")){
+            for (int k = 0; k < cardInHand.size(); k++) {
+                String testcard2 = String.format("%02d", cardInHand.get(k));
+                int h = 0;
+                while (h < 4) {
+                    String currentCard2 = setCardForFunction(testcard2, h);
+                    h++;
+                    if (cardTrayTest.poseCard(currentCard2)){
+                        return currentCard2;
+                    }
+                }
+
             }
         }
         cardTrayTest.poseCard(cardToPose);
