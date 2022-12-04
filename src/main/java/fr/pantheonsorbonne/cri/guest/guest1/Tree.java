@@ -59,16 +59,16 @@ public class Tree {
 
                 switch (j){
                     case 0:
-                        this.addChild(card, valueSum, stockRemainingCard, isEnemyCardPlaced, stacks);
-                        break;
-                    case 1:
                         this.addChild(card + 1, valueSum, stockRemainingCard, isEnemyCardPlaced, stacks);
                         break;
+                    case 1:
+                        this.addChild(card, valueSum, stockRemainingCard, isEnemyCardPlaced, stacks);
+                        break;
                     case 2:
-                        this.addChild(card + 2, valueSum, stockRemainingCard, true, stacks);
+                        this.addChild(card + 3, valueSum, stockRemainingCard, true, stacks);
                         break;
                     case 3:
-                        this.addChild(card + 3, valueSum, stockRemainingCard, true, stacks);
+                        this.addChild(card + 2, valueSum, stockRemainingCard, true, stacks);
                         break;
                 }
 
@@ -161,12 +161,12 @@ public class Tree {
 
         for(Tree i : this.childs){
             Tree stock = i.findBestValue(TreeBest);
-            if(stock.nodeValue > TreeBest.nodeValue){
+            if(stock.nodeValue > TreeBest.nodeValue && stock.nodeIndex>=2){
                 TreeBest = stock;
             }
         }
 
-        if(this.nodeValue > TreeBest.nodeValue){
+        if(this.nodeValue > TreeBest.nodeValue && this.nodeIndex>=2){
             TreeBest = this;
         }
 
