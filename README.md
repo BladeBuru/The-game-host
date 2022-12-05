@@ -91,8 +91,8 @@ Joueur 2 = guest2(Equipe S - Fabien/Noah).
 
 ## En ligne
 
-Pour lancer une partie en ligne on lance TheGameNetworkEngine.
-On peut ensuite lancer les Player(Player1HardNetwork et PlayerHardNetwork) que l'on souhaite, avec différents niveaux de difficulté, qui se trouvent dans guest1(Equipe F - Marius/Simon) et guest2(Equipe S - Fabien/Noah). 
+Pour lancer une partie en ligne il faut ajouter le mot de passe dans le fichier properties puis on lance TheGameNetworkEngine.
+On peut ensuite lancer les Players (ex : Player1HardNetwork et PlayerHardNetwork) que l'on souhaite, avec différents niveaux de difficulté, qui se trouvent dans guest1(Equipe F - Marius/Simon) et guest2(Equipe S - Fabien/Noah). 
 
 ----------
 
