@@ -101,4 +101,4 @@ Les cartes distribuées sont données sous un format composé de 4 caratères :
 - La direction de la pile ^ (ascendant) ou v (descendante)
 - Le détenteur de la pile A (Allié) ou E (Ennemi)
 
-![](https://github.com/BladeBuru/The-game-host/blob/master/The%20Game.png)
+![](https://github.com/BladeBuru/The-game-host/blob/master/The%20Game%20Protocol.png)
