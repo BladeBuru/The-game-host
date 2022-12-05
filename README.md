@@ -83,7 +83,7 @@ Un exemple de jeu supportant le réseau
 # Usage
 ## En local
 
-Pour lancer une partie en local on lance LocalTheGame. Vous pourrez changer le nombre de parties jouées via la constante "NUMBEROFROUNDS" dans la classe "LocalTheGame".
+Pour lancer une partie en local on lance LocalTheGame. Vous pourrez changer le nombre de parties jouées via la constante "NUMBER_OF_ROUND" dans la classe "LocalTheGame".
 Le résultat du nombre de partie gagnées par joueur se trouvera dans la console après que toutes les parties aient eu lieu.
 
 ## En ligne
