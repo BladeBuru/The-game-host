@@ -69,8 +69,36 @@ Lorsqu‘un joueur a épuisé sa pioche, il continue à jouer sans pouvoir pioch
 Attention : Le joueur doit continuer, lors de ses tours suivants, à poser deux cartes par tour (ou plus s‘il le souhaite) de la manière décrite plus haut. La partie se termine immédiatement lorsqu‘un joueur a posé la totalité de ses 58 cartes numérotées. Ce joueur est le gagnant. Le jeu peut se terminer prématurément si, au cours de la partie, un joueur ne peut plus poser le nombre minimum requis de cartes (soit deux cartes). Dans ce cas, ce joueur a perdu.
 
 
+#Détail des classes principales
+
+Un exemple de jeu supportant le réseau
+
+    LocalTheGame : la version du jeu supportant le jeu en local
+    TheGameEngine : le moteur du jeu
+    TheGameNetorkPlayer : le joueur distant en cas de partie réseau
+    TheGameNetworkEngine : la version du jeu supportant le réseau
+    CardTray : une copie du jeu avec les règles de pose utilisée pour vérifier les coups/stratégies
+    
+
+# Usage
+## En local
+
+Pour lancer une partie en local on lance LocalTheGame. Vous pourrez changer le nombre de parties jouées via la constante "NUMBER_OF_ROUND" dans la classe "LocalTheGame".
+Le résultat du nombre de partie gagnées par joueur se trouvera dans la console après que toutes les parties aient eu lieu.
+
+## En ligne
+
+Pour lancer une partie en ligne on lance TheGameNetworkEngine.
+On peut ensuite lancer les Player que l'on souhaite, avec différents niveaux de difficulté, qui se trouvent dans guest1(Equipe F - Marius/Simon) et guest2(Equipe S - Fabien/Noah). 
+
 ----------
 
 # Protocole réseau
 
-![](https://github.com/BladeBuru/The-game-host/blob/master/The%20Game.png)
+Les cartes distribuées sont données sous un format composé de 4 caratères :
+- Le premier chiffre qui compose la valeur de la carte
+- Le second chiffre qui compose la valeur de la carte
+- La direction de la pile ^ (ascendant) ou v (descendante)
+- Le détenteur de la pile A (Allié) ou E (Ennemi)
+
+![](https://github.com/BladeBuru/The-game-host/blob/master/The%20Game%20Protocol.png)
