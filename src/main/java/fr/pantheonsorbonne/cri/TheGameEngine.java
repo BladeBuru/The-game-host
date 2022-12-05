@@ -39,6 +39,7 @@ public abstract class TheGameEngine {
             ArrayList<String> cardsPlaying =getCardsPlayed(firstPlayer.getName());
             ToStringRound(firstPlayer,secondPlayer, cardsPlaying);
             if (!playRound(firstPlayer, secondPlayer,cardsPlaying )) {
+                declareWinner(secondPlayer.getName());
                 break;
             }
             // Test if a player to win (He has no more cards in his hand and in the draw pile)
@@ -121,7 +122,7 @@ public abstract class TheGameEngine {
         return cardsPlaySplit;
     }
 
-    protected static ArrayList<Integer> splitInteger(String cardsPlay) {
+    public static ArrayList<Integer> splitInteger(String cardsPlay) {
 
             ArrayList<String> cardsPlaySplit =  new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
             ArrayList<Integer> newList = new ArrayList<Integer>(cardsPlaySplit.size()) ;

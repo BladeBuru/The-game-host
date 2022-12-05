@@ -3,15 +3,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>groupId</groupId>
-	<artifactId>artifactId</artifactId>
+	<groupId>fr.pantheonsorbonne.miage</groupId>
+	<artifactId>l3-poo-war</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<scm>
-		<connection>scm:git:https://github.com/nherbaut/java-maven-quickstart-latest.git</connection>
-		<developerConnection>scm:git:https://github.com/nherbaut/java-maven-quickstart-latest.git</developerConnection>
-		<url>https://github.com/nherbaut/java-maven-quickstart-latest</url>
-	  </scm>
 
 
 	<properties>
@@ -37,11 +32,11 @@
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
+			<groupId>fr.pantheonsorbonne.miage</groupId>
+			<artifactId>poo-player</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -144,9 +139,6 @@
 				<version>3.12.1</version>
 				<configuration>
 					<attach>true</attach>
-					<reportPlugins>
-						
-					</reportPlugins>
 				</configuration>
 				<executions>
 					<execution>
@@ -251,4 +243,18 @@
 			<url>scm:git:git@github.com:nherbaut/java-maven-quickstart-latest.git</url>
 		</site>
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>reposilite-repository-snapshots</id>
+			<name>MIAGE.DEV maven repository snapshots</name>
+			<url>https://maven.miage.dev/snapshots</url>
+		</repository>
+
+		<repository>
+			<id>reposilite-repository-release</id>
+			<name>MIAGE.DEV maven repository releases</name>
+			<url>https://maven.miage.dev/releases</url>
+		</repository>
+	</repositories>
 </project>

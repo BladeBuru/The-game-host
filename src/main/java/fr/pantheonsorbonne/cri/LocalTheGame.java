@@ -1,9 +1,8 @@
 package fr.pantheonsorbonne.cri;
 
-import fr.pantheonsorbonne.cri.game.Player;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerHard;
-import fr.pantheonsorbonne.cri.guest.guest2.PlayerMedium;
+
 
 import java.util.*;
 
