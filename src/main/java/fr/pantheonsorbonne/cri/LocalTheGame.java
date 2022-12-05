@@ -1,5 +1,7 @@
 package fr.pantheonsorbonne.cri;
 
+
+import fr.pantheonsorbonne.cri.guest.guest1.Player1Hard;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerHard;
 
@@ -13,8 +15,8 @@ public class LocalTheGame extends TheGameEngine {
     public LocalTheGame() {
         players = new HashMap<>();
 
-        players.put("joueur 1", new PlayerHard("joueur 1" ,-1,-1));
-        players.put("joueur 2" , new PlayerHard("joueur 2",-1,0));
+        players.put("joueur 1", new Player1Hard("joueur 1"));
+        players.put("joueur 2" , new PlayerHard("joueur 2",-1,-1));
 
 
     }
