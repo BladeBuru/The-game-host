@@ -28,6 +28,7 @@ public class CardTray {
         this.downEnemyStack = enemyPlayer.getDownStack();
     }
 
+    //Pose une carte sur la stack ascendante allié
     protected boolean poseAscendingStackAlly(int card) {
         if(card > this.ascendingAllyStack || card == this.ascendingAllyStack - 10){
             this.ascendingAllyStack = card;
@@ -36,6 +37,7 @@ public class CardTray {
         return false;
     }
 
+    //Pose une carte sur la stack descendante allié
     protected boolean poseDownStackAlly(int card) {
         if(card < this.downAllyStack || card == this.downAllyStack + 10){
             this.downAllyStack = card;
@@ -44,6 +46,7 @@ public class CardTray {
         return false;
     }
 
+    //Pose une carte sur la stack ascendante enemy
     protected boolean poseAscendingStackEnemy(int card) {
         if(card < this.ascendingEnemyStack && this.playEnemyStack == false){
             this.ascendingEnemyStack = card;
@@ -53,6 +56,7 @@ public class CardTray {
         return false;
     }
 
+    //Pose une carte sur la stack descendante enemy
     protected boolean poseDownStackEnemy(int card) {
         if(card > this.downEnemyStack && this.playEnemyStack == false){
             this.downEnemyStack = card;
@@ -61,18 +65,13 @@ public class CardTray {
         }
         return false;
     }
-    //09vA,18^v
-    public boolean poseCard(String card){
 
-        // TODO WARNING truc pas beau a modifier récupère le next number et les next char
+    //Pose une carte sur une stack
+    public boolean poseCard(String card){
 
         int value = Integer.parseInt( card.substring(0,2));
         char typeStack = card.charAt(2);
         char whichSide = card.charAt(3);
-
-        //ToDo
-        //ToDo
-
 
         if(whichSide == CHARACTER_ALLY){
             if (typeStack == CHARACTER_ASCENDING_STACK){

@@ -1,20 +1,29 @@
 package fr.pantheonsorbonne.cri;
 
 import fr.pantheonsorbonne.cri.game.Player;
+
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
 
-    public static void main(String[] args) {
-        new PlayerTest().getDrawCardsTest();
-    }
-    //@Test
+    Player test = new Player();
+
+    @Test
     public void getDrawCardsTest(){
         Player p1 = new Player(14);
         String s = p1.getDrawCards(Player.CARD_IN_HAND );
-        System.out.println("Test"+ s);
-    //ToDO
+    }
 
+    @Test
+    public void cardIsInHandTrue(){
+        ArrayList<Integer> testt = new ArrayList<>();
+        testt.add(15);
+        test.setCardInHand(testt);
+        assertTrue(test.cardIsInHand(15));
     }
 
 }

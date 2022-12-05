@@ -99,6 +99,10 @@ public class Player {
         this.downStack = downStack;
     }
 
+    public void setCardInHand(List<Integer> cards) {
+        this.cardInHand = cards;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

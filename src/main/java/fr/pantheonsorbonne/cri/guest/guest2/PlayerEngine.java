@@ -28,9 +28,10 @@ public abstract class PlayerEngine extends Player {
         return downStackEnemy;
     }
 
-
+    //Renvoi du coup joué par le joueur
     public abstract String bestMoov();
 
+    //Adapte un coup sous le bon format de données
     protected String setCardForFunction(String cardtoset, int whichset){
         switch(whichset){
             case 0:
