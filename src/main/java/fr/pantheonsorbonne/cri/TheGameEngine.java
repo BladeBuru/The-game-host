@@ -122,7 +122,7 @@ public abstract class TheGameEngine {
         return cardsPlaySplit;
     }
 
-    protected static ArrayList<Integer> splitInteger(String cardsPlay) {
+    public static ArrayList<Integer> splitInteger(String cardsPlay) {
 
             ArrayList<String> cardsPlaySplit =  new ArrayList<>(Arrays.asList(cardsPlay.split(",")));
             ArrayList<Integer> newList = new ArrayList<Integer>(cardsPlaySplit.size()) ;

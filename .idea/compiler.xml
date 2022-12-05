@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="l3-poo-war" />
         <module name="The-game-host" />
-        <module name="artifactId" />
+        <module name="Game - Copie" />
       </profile>
     </annotationProcessing>
   </component>

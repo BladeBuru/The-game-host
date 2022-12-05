@@ -130,7 +130,7 @@ public class Player1Hard extends PlayerEngine {
             if (!secondCard.equals("")){
                 return cardsToPose + "," + secondCard;
             }
-            
+
             cardsToPose = cardsToPose + "," + firstCardToPose(cardTraySet, cardInHand);
         }
         return cardsToPose;

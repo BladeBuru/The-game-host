@@ -1,4 +1,4 @@
-package fr.pantheonsorbonne.cri;
+package fr.pantheonsorbonne.miage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
