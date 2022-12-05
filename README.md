@@ -85,11 +85,14 @@ Un exemple de jeu supportant le réseau
 
 Pour lancer une partie en local on lance LocalTheGame. Vous pourrez changer le nombre de parties jouées via la constante "NUMBER_OF_ROUND" dans la classe "LocalTheGame".
 Le résultat du nombre de partie gagnées par joueur se trouvera dans la console après que toutes les parties aient eu lieu.
+Joueur 1 = guest1(Equipe F - Marius/Simon).
+Joueur 2 = guest2(Equipe S - Fabien/Noah). 
+
 
 ## En ligne
 
 Pour lancer une partie en ligne on lance TheGameNetworkEngine.
-On peut ensuite lancer les Player que l'on souhaite, avec différents niveaux de difficulté, qui se trouvent dans guest1(Equipe F - Marius/Simon) et guest2(Equipe S - Fabien/Noah). 
+On peut ensuite lancer les Player(Player1HardNetwork et PlayerHardNetwork) que l'on souhaite, avec différents niveaux de difficulté, qui se trouvent dans guest1(Equipe F - Marius/Simon) et guest2(Equipe S - Fabien/Noah). 
 
 ----------
 
