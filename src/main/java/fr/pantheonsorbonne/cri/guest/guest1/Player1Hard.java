@@ -5,7 +5,7 @@ import java.util.List;
 import java.lang.Math;
 
 import fr.pantheonsorbonne.cri.game.CardTray;
-import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
+import fr.pantheonsorbonne.cri.game.PlayerEngine;
 
 public class Player1Hard extends PlayerEngine {
 

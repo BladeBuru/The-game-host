@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class TheGameEngineNetwork extends TheGameEngine {
 
-    private static final int PLAYER_COUNT = 2;
+    private static final int PLAYER_COUNT = 3;
 
     private final HostFacade hostFacade;
     private final Set<String> players;
@@ -32,6 +32,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
 
         //wait for enough players to join
         hostFacade.waitForExtraPlayerCount(PLAYER_COUNT);
+
 
         TheGameEngine host = new TheGameEngineNetwork(hostFacade, ourGame.getPlayers(), ourGame);
         host.play();
@@ -55,7 +56,7 @@ public class TheGameEngineNetwork extends TheGameEngine {
             if (!player.equals(winner)) loser = player;
         }
         hostFacade.sendGameCommandToPlayer(theGame, loser , new GameCommand("gameOver", "lost"));
-
+        System.out.println(winner + " has won !!!");
     }
 
     @Override

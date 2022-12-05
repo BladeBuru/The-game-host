@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class PlayerHardNetwork  {
 
-    static final String playerId = "Player-" + new Random().nextInt();
+    static final String playerId = "Player-les-indestructibles" ;
     static final PlayerFacade playerFacade = Facade.getFacade();
     static Game theGame;
 

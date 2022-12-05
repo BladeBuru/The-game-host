@@ -1,4 +1,4 @@
-package fr.pantheonsorbonne.cri.guest.guest2;
+package fr.pantheonsorbonne.cri.game;
 
 import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;

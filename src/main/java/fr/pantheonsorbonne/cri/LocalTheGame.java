@@ -2,7 +2,7 @@ package fr.pantheonsorbonne.cri;
 
 
 import fr.pantheonsorbonne.cri.guest.guest1.Player1Hard;
-import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
+import fr.pantheonsorbonne.cri.game.PlayerEngine;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerHard;
 
 

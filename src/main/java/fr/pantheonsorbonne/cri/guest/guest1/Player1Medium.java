@@ -1,6 +1,6 @@
 package fr.pantheonsorbonne.cri.guest.guest1;
 
-import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
+import fr.pantheonsorbonne.cri.game.PlayerEngine;
 
 import java.util.ArrayList;
 import java.util.List;

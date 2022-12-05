@@ -2,6 +2,7 @@ package fr.pantheonsorbonne.cri.guest.guest2;
 
 import fr.pantheonsorbonne.cri.game.CardTray;
 import fr.pantheonsorbonne.cri.game.Player;
+import fr.pantheonsorbonne.cri.game.PlayerEngine;
 
 import java.util.ArrayList;
 
