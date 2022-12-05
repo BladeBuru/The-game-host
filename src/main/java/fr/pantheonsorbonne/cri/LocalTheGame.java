@@ -9,6 +9,7 @@ import fr.pantheonsorbonne.cri.guest.guest2.PlayerHard;
 import java.util.*;
 
 public class LocalTheGame extends TheGameEngine {
+    private static final int NUMBER_OF_ROUND = 1;
    static   HashMap<String, Integer> scores = new HashMap<>();
     private final Map<String, PlayerEngine> players;
 
@@ -24,7 +25,7 @@ public class LocalTheGame extends TheGameEngine {
     public static void main(String[] args) {
 
         int i = 0;
-        while (i < 100) {
+        while (i < NUMBER_OF_ROUND) {
             LocalTheGame localTheGame = new LocalTheGame();
             localTheGame.play();
             i++;
