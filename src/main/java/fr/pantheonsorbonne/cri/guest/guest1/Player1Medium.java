@@ -14,10 +14,11 @@ public class Player1Medium extends PlayerEngine {
     @Override
     public String bestMoov() {
 
+        //Génération de l'arbre
         Tree tree = new Tree(0,0, null,0,this.getStacksOrdered());
-
         tree.createTree(this.cardInHand, false);
 
+        //Envoie de la composition joué, et remove des cartes joués
         StringBuilder data = new StringBuilder();
 
         List<Integer> results = tree.findBestCombinaison();
