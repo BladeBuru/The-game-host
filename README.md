@@ -68,7 +68,6 @@ Si le joueur le peut et le souhaite, il peut aussi poser plus de deux cartes lor
 Lorsqu‘un joueur a épuisé sa pioche, il continue à jouer sans pouvoir piocher de nouvelles cartes. 
 Attention : Le joueur doit continuer, lors de ses tours suivants, à poser deux cartes par tour (ou plus s‘il le souhaite) de la manière décrite plus haut. La partie se termine immédiatement lorsqu‘un joueur a posé la totalité de ses 58 cartes numérotées. Ce joueur est le gagnant. Le jeu peut se terminer prématurément si, au cours de la partie, un joueur ne peut plus poser le nombre minimum requis de cartes (soit deux cartes). Dans ce cas, ce joueur a perdu.
 
-----------
 
 #Détail des classes principales
 
@@ -80,7 +79,6 @@ Un exemple de jeu supportant le réseau
     TheGameNetworkEngine : la version du jeu supportant le réseau
     CardTray : une copie du jeu avec les règles de pose utilisée pour vérifier les coups/stratégies
     
-----------
 
 # Usage
 ## En local
