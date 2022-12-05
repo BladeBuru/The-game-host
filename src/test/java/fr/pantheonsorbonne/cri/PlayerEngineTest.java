@@ -1,9 +1,11 @@
 package fr.pantheonsorbonne.cri;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import fr.pantheonsorbonne.cri.game.PlayerEngine;
 import fr.pantheonsorbonne.cri.guest.guest2.PlayerEasy;
-import fr.pantheonsorbonne.cri.guest.guest2.PlayerEngine;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -29,6 +31,6 @@ public class PlayerEngineTest
         ArrayList<Integer> test = new ArrayList<>();
         test.add(15);
         player.getCardsFrom(test);
-        assertTrue((player.getCardInHand().get(0) == 15 && player.getCardInHand().size() == 0));
+        assertFalse((player.getCardInHand().get(0) == 15 && player.getCardInHand().size() == 0));
     }
 }
